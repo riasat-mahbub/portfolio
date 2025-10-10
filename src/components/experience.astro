@@ -1,10 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import bracu from "../../public/bracu_alt.png";
-import dal from "../../public/dal-logo.png"
+import bs23 from "../../public/bs23-logo.jpg"
 
 interface Education {
-  degree: string;
+  role: string;
   image: ImageMetadata;
   institution: string;
   year: string;
@@ -14,22 +13,13 @@ interface Education {
 
 const educations: Education[] = [
   {
-    degree: "Master of Computer Science",
-    image: dal,
-    institution: "Dalhousie University",
-    year: "2025",
+    role: "Associate Software Engineer",
+    image: bs23,
+    institution: "Brain Station 23",
+    year: "2022-2023",
     description: "Achieved cross disciplinary experience with planners and civil engineers to incorporate software engineering practices with simulation systems. Expanded my knowledge of LLM agents, simulation modeling and statistical techniques",
-    logo_bg: "transparent"
-  },
-  {
-    degree: "Bachelor of Computer Science and Engineering",
-    image: bracu,
-    institution: "BRAC University",
-    year: "2021",
-    description: "Earned comprehensive foundation in computer science, software engineering, algorithms, data structures, databases, and computer systems. Developed strong problem-solving, programming, and analytical skills by participating in both courses and programming contests.",
     logo_bg: "white"
   },
-
 ];
 ---
 
@@ -37,7 +27,7 @@ const educations: Education[] = [
   <div class="max-w-5xl mx-auto space-y-8">
     <div class="text-center space-y-4">
       <h2 class="text-4xl md:text-5xl font-medium text-[var(--white)]">
-        Education
+        Work Experience
       </h2>
       <p class="text-lg text-[var(--white-icon)] max-w-2xl mx-auto">
         <!-- Add your education description here -->
@@ -53,7 +43,7 @@ const educations: Education[] = [
           <div class="flex flex-col flex-1 text-center md:text-left">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
               <h3 class="text-xl md:text-2xl font-medium text-[var(--white)]">
-                {item.degree}
+                {item.role}
               </h3>
               <span class="text-[var(--white-icon)] text-sm md:text-base">
                 {item.year}
