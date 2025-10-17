@@ -61,9 +61,3 @@ npm run dev
 - 💼 LinkedIn: [riasat-m-70682b115](https://www.linkedin.com/in/riasat-m-70682b115/)
 - 🐙 GitHub: [riasat-mahbub](https://github.com/riasat-mahbub)
 - 📍 Location: Halifax, Canada
-
----
-
-> **License:**  
-> This project is licensed under the [MIT License](https://opensource.org/licenses/mit).  
-> Copyright © 2025 Riasat Mahbub. All rights reserved.
