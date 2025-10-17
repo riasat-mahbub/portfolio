@@ -1,37 +1,67 @@
 ---
 import { Image } from "astro:assets";
-import  stock from "../../public/stock.jpg"
+import  aergia from "../../public/images/aergia.png"
+
+import  wozaro from "../../public/images/wozaro.png"
 
 interface Project {
   title: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
   link: string;
-  preview: string;
-  status: string;
+  preview?: string;
+  description: string;
 }
 
-const projects: Project[] = [
+const live_projects: Project[] = [
   {
-    title: "Test",
-    image: stock as ImageMetadata,
-    link: "",
-    preview: "",
-    status: "Deployed",
+    title: "Aergia",
+    image: aergia as ImageMetadata,
+    link: "https://github.com/riasat-mahbub/aergia-frontend",
+    preview: "https://aergia.netlify.app/home",
+    description: "Free and professional resume builder",
+  },
+  {
+    title: "Wozaro",
+    image: wozaro as ImageMetadata,
+    link: "https://github.com/riasat-mahbub/wozaro",
+    preview: "https://wozaro.netlify.app/home",
+    description: "A hub for casual games",
+  },
+];
+
+const research: Project[] = [
+  {
+    title: "Understanding Code Smells and Refactoring Practices in Simulation Modeling Systems - A Comprehensive Study",
+    link: "https://dalspace.library.dal.ca/items/54690d16-478b-4d03-b2fd-12a95080d753",
+    description: "",
+  },
+  {
+    title: "On the Prevalence, Evolution, and Impact of Code Smells in Simulation Modelling Software",
+    link: "https://www.arxiv.org/abs/2409.03957",
+    description: "",
+  },
+  {
+    title: "Neural Network Architecture for the Classification of Alzheimer's Disease from Brain MRI",
+    link: "https://ieeexplore.ieee.org/document/9707412",
+    description: "",
+  },
+  {
+    title: "City Recommender System: A Comparative Study of AI-Driven Approaches",
+    link: "https://link.springer.com/chapter/10.1007/978-3-031-73125-9_17",
+    description: "",
   },
 ];
 ---
-
-<section
-  id="projects"
-  class="py-12 border-t border-[#ffffff10] text-[var(--white)]"
->
-  <div class="max-w-5xl mx-auto">
+<article class="py-12  border-[#ffffff10] text-[var(--white)] border-t-2">
+  <section
+    id="projects"  class="max-w-5xl mx-auto"
+  >
     <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My work</h2>
-    <h3 class="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Live Projects</h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {
-        projects.map((project) => (
+        live_projects.map((project) => (
           <div class="group">
             <a
               href={project.preview}
@@ -50,7 +80,7 @@ const projects: Project[] = [
                 <div class="flex-grow">
                   <h4 class="text-2xl font-semibold">{project.title}</h4>
                   <span class="py-1 text-sm text-[var(--white-icon)]">
-                    {project.status}
+                    {project.description}
                   </span>
                 </div>
                 <div class="flex gap-2 ml-auto">
@@ -91,23 +121,62 @@ const projects: Project[] = [
         ))
       }
     </div>
-    <a
-      target="_blank"
-      href="https://github.com/riasat-mahbub?tab=repositories"
-      aria-label="GitHub"
-      class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
+
+
+  </section>
+
+  <section id="research-papers" class="py-12 border-t border-[#ffffff10] text-[var(--white)] max-w-5xl mx-auto my-10">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-4xl md:text-5xl font-medium mb-8">Research</h3>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {research.map((paper) => (
+          <a
+            href={paper.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group"
+          >
+            <div class="flex flex-col rounded-2xl shadow-lg bg-[#1414149c] p-6 transition-transform duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#1c1c1c] h-60">
+              <h4 class="text-2xl font-semibold mb-2">{paper.title}</h4>
+              <p class="text-sm text-[var(--white-icon)]">{paper.description}</p>
+                <div class="self-end mt-auto size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-7"
+                  >
+                    <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+                  </svg>
+              </div>
+            </div>
+
+
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <a
+    target="_blank"
+    href="https://github.com/riasat-mahbub?tab=repositories"
+    aria-label="GitHub"
+    class="w-full flex items-center justify-center gap-2 mt-9 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] p-3 rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)] hover:scale-105"
+  >
+    <span class="md:text-lg text-md">More projects on</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="size-6"
     >
-      <span class="md:text-lg text-md">More projects on</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-6"
-      >
-        <path
-          d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"
-        ></path>
-      </svg>
-    </a>
-  </div>
-</section>
+      <path
+        d="M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z"
+      ></path>
+    </svg>
+  </a>
+</article>
+
