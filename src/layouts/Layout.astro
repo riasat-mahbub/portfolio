@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from "@/components/theme-toggle.astro";
+
 interface Props {
   title: string;
 }
@@ -19,7 +21,8 @@ const { title } = Astro.props;
 
     <title>{title}</title>
   </head>
-  <body class="bg-[--background] sm:px-28 lg:px-20 px-9">
+  <body class="bg-[--background] sm:px-28 lg:px-20 px-9 transition-colors duration-300">
+    <ThemeToggle />
     <slot />
   </body>
 </html>
@@ -33,6 +36,30 @@ const { title } = Astro.props;
     --white: #dfdfdf;
     --white-icon: #f3f3f398;
     --white-icon-tr: #f3f3f310;
+  }
+
+  [data-theme="light"] {
+    --background: #ffffff;
+    --sec: #6b46c1;
+    --white: #111827;
+    --white-icon: #6b7280;
+    --white-icon-tr: #e5e7eb;
+  }
+
+  [data-theme="light"] .bg-\[\#1414149c\] {
+    background-color: #f9fafb !important;
+  }
+
+  [data-theme="light"] .hover\:bg-\[var\(--white-icon-tr\)\]:hover {
+    background-color: #e5e7eb !important;
+  }
+
+  [data-theme="light"] .border-\[\#ffffff10\] {
+    border-color: #e5e7eb !important;
+  }
+
+  [data-theme="light"] .hover\:bg-\[\#1c1c1c\]:hover {
+    background-color: #f3f4f6 !important;
   }
 
   * {

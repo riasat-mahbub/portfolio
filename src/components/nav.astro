@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
 ---
 
 <div class="flex justify-center w-full">
-  <nav id="main-nav" class="fixed left-1/2 -translate-x-1/2 z-[100] bg-[var(--background)] border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out md:top-6 md:bottom-auto bottom-0 px-4 py-2 rounded-full">
+  <nav id="main-nav" class="fixed left-1/2 -translate-x-1/2 z-[100] bg-[var(--background)] active:font-bold border border-transparent backdrop-blur-xl transition-all duration-500 ease-in-out md:top-6 md:bottom-auto bottom-0 px-4 py-2 rounded-full">
     <div class="container mx-auto flex justify-center items-center">
       <ul class="flex gap-6 md:gap-12 justify-center overflow-x-auto scrollbar-hide">
         {
@@ -107,8 +107,8 @@ const navItems: NavItem[] = [
   }
 
   nav.scrolling {
-    background-color: var(--component-bg);
-    border-color: #ffffff10;
+    background-color: var(--background);
+    border-color: var(--white-icon-tr);
   }
 
   nav a.active .nav-indicator {
@@ -117,7 +117,7 @@ const navItems: NavItem[] = [
   }
 
   nav a.active {
-    color: white !important;
+    font-weight: bold !important;
   }
 
   @media (max-width: 1024px) {

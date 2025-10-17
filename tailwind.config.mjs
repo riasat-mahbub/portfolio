@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       keyframes: {
@@ -23,6 +24,16 @@ export default {
         'facebook-blue': '#1877F2',
         'twitter-blue': '#1DA1F2',
         'slack-purple': '#4A154B',
+      },
+      backgroundColor: {
+        'theme-bg': 'var(--background)',
+      },
+      textColor: {
+        'theme-primary': 'var(--white)',
+        'theme-secondary': 'var(--white-icon)',
+      },
+      borderColor: {
+        'theme-border': 'var(--white-icon-tr)',
       }
     },
   },
