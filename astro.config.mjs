@@ -15,6 +15,8 @@ export default defineConfig({
       },
     },
   },
+  site: "https://riasat-mahbub.github.io/portfolio/",
+  base: "/portfolio/",
   output: "static",
   build: {
     inlineStylesheets: "auto",
