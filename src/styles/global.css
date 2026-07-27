@@ -1,0 +1,68 @@
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+
+:root {
+  --background: #101010;
+  --sec: #a476ff;
+  --white: #dfdfdf;
+  --white-icon: #f3f3f398;
+  --white-icon-tr: #f3f3f310;
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --sec: #6b46c1;
+  --white: #111827;
+  --white-icon: #6b7280;
+  --white-icon-tr: #e5e7eb;
+}
+
+[data-theme="light"] .bg-\[\#1414149c\] {
+  background-color: #f9fafb !important;
+}
+
+[data-theme="light"] .hover\:bg-\[var\(--white-icon-tr\)\]:hover {
+  background-color: #e5e7eb !important;
+}
+
+[data-theme="light"] .border-\[\#ffffff10\] {
+  border-color: #e5e7eb !important;
+}
+
+[data-theme="light"] .hover\:bg-\[\#1c1c1c\]:hover {
+  background-color: #f3f4f6 !important;
+}
+
+* {
+  font-family: "Montserrat", -apple-system, system-ui, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*::selection {
+  background-color: var(--sec);
+  color: var(--background);
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white-icon-tr);
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--white-icon);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sec);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--white-icon-tr) transparent;
+}
