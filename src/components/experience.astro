@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import bs23 from "../../public/bs23-logo.jpg"
+import dal from "../../public/dal-light.png"
 
 interface Education {
   role: string;
@@ -12,6 +13,14 @@ interface Education {
 }
 
 const educations: Education[] = [
+  {
+    role: "Research Assistant",
+    image: dal,
+    institution: "Dalhousie University",
+    year: "2023-2025",
+    description: "Conducted research on code quality, code smells, and refactoring practices in simulation modeling systems. Worked with LLM agents and statistical techniques to analyze large-scale software repositories. Collaborated with planners and civil engineers in a cross-disciplinary research environment.",
+    logo_bg: "white"
+  },
   {
     role: "Associate Software Engineer",
     image: bs23,
