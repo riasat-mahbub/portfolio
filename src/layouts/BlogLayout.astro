@@ -18,6 +18,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <ClientRouter />
+    <script is:inline>
+      (function() {
+        const t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content={description || "Blog - Riasat Mahbub"} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
