@@ -60,11 +60,13 @@ const toc = (headings || []).filter(h => h.depth >= 2 && h.depth <= 3);
             class="text-[var(--white-icon)] hover:text-purple-400 transition-colors text-sm"
             title="Copy link"
             aria-label="Copy link to this post"
+            aria-pressed="false"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
               <path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H20.9998C21.5521 2 21.9998 2.44772 21.9998 3V17C21.9998 17.5523 21.5521 18 20.9998 18H17.9998V20.9991C17.9998 21.5519 17.549 21.9993 16.993 21.9993L3.00666 22C2.45059 21.9998 2 21.5516 2 20.9991L2.0026 7.00087C2.0027 6.44811 2.45264 6 3.01042 6H6.9998ZM8.9998 6H16.9998V16H19.9998V4H8.9998V6Z"/>
             </svg>
           </button>
+          <span class="sr-only" id="copy-status" role="status" aria-live="polite"></span>
         </div>
       </div>
       
@@ -154,9 +156,18 @@ const toc = (headings || []).filter(h => h.depth >= 2 && h.depth <= 3);
   document.getElementById('copy-link-btn')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
       const btn = document.getElementById('copy-link-btn');
+      const status = document.getElementById('copy-status');
       if (btn) {
         btn.classList.add('text-green-400');
-        setTimeout(() => btn.classList.remove('text-green-400'), 1500);
+        btn.setAttribute('aria-pressed', 'true');
+        setTimeout(() => {
+          btn.classList.remove('text-green-400');
+          btn.setAttribute('aria-pressed', 'false');
+        }, 1500);
+      }
+      if (status) {
+        status.textContent = 'Link copied';
+        setTimeout(() => { status.textContent = ''; }, 1500);
       }
     });
   });
