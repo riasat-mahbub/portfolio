@@ -3,14 +3,47 @@
 
 <div class="flex justify-center w-full">
   <nav class="fixed left-1/2 -translate-x-1/2 z-[100] bg-[var(--background)] border border-[var(--white-icon-tr)] backdrop-blur-xl transition-all duration-500 ease-in-out top-6 px-6 py-3 rounded-full">
-    <a
-      href="/"
-      class="flex items-center gap-2 text-[var(--white-icon)] hover:text-[var(--white)] transition-colors text-base font-medium"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-        <path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19Z"/>
-      </svg>
-      Go back to Home
-    </a>
+    <ul class="flex items-center gap-6">
+      <li>
+        <a
+          href="/"
+          class="flex items-center gap-2 text-[var(--white-icon)] hover:text-[var(--white)] transition-colors text-base font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path d="M19 21H5C4.44772 21 4 20.5523 4 20V11L1 11L11.3273 1.6115C11.7087 1.26475 12.2913 1.26475 12.6727 1.6115L23 11L20 11V20C20 20.5523 19.5523 21 19 21ZM6 19H18V9.15745L12 3.7029L6 9.15745V19Z"/>
+          </svg>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+      </li>
+      <li class="w-px h-5 bg-[var(--white-icon-tr)]"></li>
+      <li>
+        <a
+          href="/blog"
+          class="text-[var(--white-icon)] hover:text-[var(--white)] transition-colors text-base font-medium"
+        >
+          All Posts
+        </a>
+      </li>
+      <li>
+        <a
+          href="/blog/tags"
+          class="text-[var(--white-icon)] hover:text-[var(--white)] transition-colors text-base font-medium"
+        >
+          Tags
+        </a>
+      </li>
+      <li>
+        <a
+          href="/rss.xml"
+          target="_blank"
+          class="flex items-center gap-1 text-[var(--white-icon)] hover:text-[var(--white)] transition-colors text-base font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M3 17C5.20914 17 7 18.7909 7 21H3V17ZM3 10C9.07513 10 14 14.9249 14 21H12C12 16.0294 7.97059 12 3 12V10ZM3 3C12.9411 3 21 11.0589 21 21H19C19 12.1634 11.8366 5 3 5V3Z"/>
+          </svg>
+          <span class="hidden sm:inline">RSS</span>
+        </a>
+      </li>
+    </ul>
   </nav>
 </div>

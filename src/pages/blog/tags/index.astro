@@ -1,0 +1,52 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogNav from "@/components/blog-nav.astro";
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+// Collect all tags with post counts
+const tagMap = new Map<string, number>();
+posts.forEach(post => {
+  post.data.tags.forEach(tag => {
+    const key = tag.toLowerCase();
+    tagMap.set(key, (tagMap.get(key) || 0) + 1);
+  });
+});
+
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
+
+const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1] - a[1]);
+---
+
+<BlogLayout title="Tags - Blog" description="Browse blog posts by tag">
+  <BlogNav />
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <h1 class="text-4xl md:text-5xl font-medium text-[var(--white)] mb-2">Tags</h1>
+      <p class="text-lg text-[var(--white-icon)] mb-12">Browse posts by topic</p>
+
+      {sortedTags.length > 0 ? (
+        <div class="flex flex-wrap gap-3">
+          {sortedTags.map(([tag, count]) => (
+            <a
+              href={`/blog/tags/${slugify(tag)}`}
+              class="group flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] 
+                     bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition-all duration-300
+                     text-[var(--white-icon)] hover:text-[var(--white)]"
+            >
+              <span class="text-base">{tag}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-[var(--white-icon-tr)] text-[var(--white-icon)]">
+                {count}
+              </span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-[var(--white-icon)]">No tags yet.</p>
+      )}
+    </div>
+  </main>
+</BlogLayout>

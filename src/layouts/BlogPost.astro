@@ -1,14 +1,22 @@
 
 ---
-import Layout from "@/layouts/Layout.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
 import BlogNav from "@/components/blog-nav.astro";
 // src/layouts/BlogPost.astro
 import type { CollectionEntry } from 'astro:content';
 
-// This automatically syncs Props with your Zod schema
-type Props = CollectionEntry<'blog'>['data'];
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+}
 
-const { title, description, difficulty, tags, publishDate } = Astro.props;
+// This automatically syncs Props with your Zod schema
+type Props = CollectionEntry<'blog'>['data'] & {
+  readingTime: number;
+  prevPost?: { slug: string; title: string } | null;
+  nextPost?: { slug: string; title: string } | null;
+};
+
+const { title, description, difficulty, tags, publishDate, readingTime, prevPost, nextPost } = Astro.props;
 
 
 const difficultyColors = {
@@ -18,7 +26,7 @@ const difficultyColors = {
 };
 ---
 
-<Layout title={`${title} - Blog`}>
+<BlogLayout title={`${title} - Blog`} description={description}>
   <BlogNav />
   <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
     <div class="max-w-5xl mx-auto px-6 py-12">
@@ -31,29 +39,61 @@ const difficultyColors = {
             {difficulty}
           </span>
           {tags.map(tag => (
-            <span class="px-3 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded-full text-sm">
+            <a href={`/blog/tags/${slugify(tag)}`} class="px-3 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded-full text-sm hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)]/50 transition-colors">
               {tag}
-            </span>
+            </a>
           ))}
         </div>
         
-        <p class="text-sm text-[var(--white-icon)]">
-          {publishDate.toLocaleDateString()}
-        </p>
+        <div class="flex items-center gap-3 text-sm text-[var(--white-icon)]">
+          <span>{publishDate.toLocaleDateString()}</span>
+          <span class="w-1 h-1 rounded-full bg-[var(--white-icon-tr)]"></span>
+          <span>{readingTime} min read</span>
+        </div>
       </div>
       
       <div class="prose prose-lg max-w-none">
         <slot />
       </div>
       
-      <div class="mt-12 pt-8 border-t border-[var(--white-icon-tr)]">
-        <a href="/blog" class="text-purple-400 hover:text-purple-300 hover:underline transition-colors">
+      <!-- Previous / Next post navigation -->
+      <div class="mt-12 pt-8 border-t border-[var(--white-icon-tr)] grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          {prevPost && (
+            <a href={`/blog/${prevPost.slug}`} class="group flex items-center gap-2 text-[var(--white-icon)] hover:text-purple-400 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0">
+                <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" />
+              </svg>
+              <div class="text-left">
+                <p class="text-xs text-[var(--white-icon)]/60">Previous</p>
+                <p class="text-sm group-hover:text-purple-300 transition-colors line-clamp-1">{prevPost.title}</p>
+              </div>
+            </a>
+          )}
+        </div>
+        <div class="md:text-right">
+          {nextPost && (
+            <a href={`/blog/${nextPost.slug}`} class="group flex items-center gap-2 md:flex-row-reverse text-[var(--white-icon)] hover:text-purple-400 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0">
+                <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z" />
+              </svg>
+              <div class="text-right">
+                <p class="text-xs text-[var(--white-icon)]/60">Next</p>
+                <p class="text-sm group-hover:text-purple-300 transition-colors line-clamp-1">{nextPost.title}</p>
+              </div>
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="/blog" class="text-purple-400 hover:text-purple-300 hover:underline transition-colors text-sm">
           ← Back to Blog
         </a>
       </div>
     </div>
   </main>
-</Layout>
+</BlogLayout>
 
 <style is:global>
   .prose {

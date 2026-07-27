@@ -1,0 +1,105 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogNav from "@/components/blog-nav.astro";
+import BlogCard from "@/components/blog-card.astro";
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  const posts = await getCollection('blog');
+  const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+    b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+
+  // Compute reading time for each post
+  const postsWithReadingTime = sortedPosts.map((post) => {
+    const bodyText = post.body || '';
+    const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+    return { post, readingTime };
+  });
+
+  return paginate(postsWithReadingTime, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
+---
+
+<BlogLayout title="Blog - Riasat Mahbub" description="My journey through coding challenges and problem-solving insights.">
+  <BlogNav />
+  <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My Journey</h2>
+      <h1 class="text-4xl md:text-5xl font-medium text-[var(--white)] mb-8">Blog</h1>
+      <p class="text-lg text-[var(--white-icon)] mb-12">
+        My journey through coding challenges and problem-solving insights.
+      </p>
+      
+      {page.data.length > 0 ? (
+        <>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+            {page.data.map(({ post, readingTime }) => (
+              <BlogCard post={post} readingTime={readingTime} />
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          {page.last > 1 && (
+            <div class="flex justify-center items-center gap-4 mt-12">
+              {page.current > 1 ? (
+                <a
+                  href={page.url.prev || '#'}
+                  class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" />
+                  </svg>
+                  Previous
+                </a>
+              ) : (
+                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed">
+                  Previous
+                </span>
+              )}
+
+              <div class="flex items-center gap-2 text-sm">
+                {Array.from({ length: page.last }, (_, i) => i + 1).map((p) => (
+                  <a
+                    href={p === 1 ? '/blog' : `/blog/${p}`}
+                    class={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
+                      p === page.current
+                        ? 'bg-[var(--sec)] text-white'
+                        : 'text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)]'
+                    }`}
+                  >
+                    {p}
+                  </a>
+                ))}
+              </div>
+
+              {page.current < page.last ? (
+                <a
+                  href={page.url.next || '#'}
+                  class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
+                >
+                  Next
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z" />
+                  </svg>
+                </a>
+              ) : (
+                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed">
+                  Next
+                </span>
+              )}
+            </div>
+          )}
+        </>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-[var(--white-icon)] text-lg">No posts yet. Check back soon!</p>
+        </div>
+      )}
+    </div>
+  </main>
+</BlogLayout>
