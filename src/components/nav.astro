@@ -22,12 +22,12 @@ const navItems: NavItem[] = [
       <ul class="flex gap-6 md:gap-12 justify-center overflow-x-auto scrollbar-hide">
         {
           navItems.map((item) => (
-            <li class="flex-0">
+              <li class="flex-none">
               <a
                 href={item.href}
                 class="flex flex-col items-center gap-1 text-[var(--white-icon)] transition-colors text-xs md:text-base relative group"
               >
-                <div class="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 scale-0 opacity-0 bg-[#A9FF5B] nav-indicator hidden md:block" />
+                <div class="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-300 scale-0 opacity-0 bg-[#A9FF5B] nav-indicator hidden md:block" aria-hidden="true" />
                 <span class="md:hidden flex items-center justify-center w-6 h-6" aria-hidden="true">
                   <fragment set:html={item.icon} />
                 </span>
@@ -44,15 +44,19 @@ const navItems: NavItem[] = [
 <script>
   const nav = document.getElementById("main-nav");
   const maxScroll = 1000;
-  let rafId:any = null;
+  let rafId: number | null = null;
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
+      if (e.metaKey || e.ctrlKey || e.button !== 0) return;
       e.preventDefault();
       const targetId = this.getAttribute("href").substring(1);
       const targetEl = document.getElementById(targetId);
-      if (targetEl) targetEl.scrollIntoView({ behavior: "smooth" });
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+        targetEl.focus({ preventScroll: true });
+      }
     });
   });
 
