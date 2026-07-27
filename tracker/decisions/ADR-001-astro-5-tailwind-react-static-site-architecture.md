@@ -20,12 +20,21 @@ CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
   referenced_by:
+  - TASK-001
+  - TASK-002
+  - TASK-003
   - FEAT-001
   - FEAT-002
   - FEAT-003
   - FEAT-004
   - FEAT-005
   - FEAT-006
+  - FEAT-007
+  - BUG-001
+  - BUG-002
+  - BUG-003
+  - BUG-004
+  - BUG-005
 ---
 
 # Astro 5 + Tailwind + React + static site architecture

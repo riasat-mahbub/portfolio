@@ -23,6 +23,9 @@ UPDATED_BY: null
 COMPUTED:
   depended_by:
   - ADR-001
+  referenced_by:
+  - TASK-001
+  - BUG-002
 ---
 
 # Dark mode with theme toggle

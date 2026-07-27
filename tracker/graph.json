@@ -6,13 +6,82 @@
     "relations": {},
     "affects": {},
     "referenced_by": [
+      "TASK-001",
+      "TASK-002",
+      "TASK-003",
       "FEAT-001",
       "FEAT-002",
       "FEAT-003",
       "FEAT-004",
       "FEAT-005",
-      "FEAT-006"
+      "FEAT-006",
+      "FEAT-007",
+      "BUG-001",
+      "BUG-002",
+      "BUG-003",
+      "BUG-004",
+      "BUG-005"
     ]
+  },
+  "TASK-001": {
+    "type": "task",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ],
+      "related": [
+        "FEAT-004"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/styles/global.css",
+        "src/layouts/Layout.astro",
+        "src/layouts/BlogLayout.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "TASK-002": {
+    "type": "task",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/components/blog-section.astro",
+        "src/components/connect.astro",
+        "src/components/projects.astro",
+        "src/components/skills.astro",
+        "src/pages/blog/[...page].astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "TASK-003": {
+    "type": "task",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/components/experience.astro",
+        "src/components/education.astro",
+        "src/pages/rss.xml.ts",
+        "src/components/projects.astro"
+      ]
+    },
+    "referenced_by": []
   },
   "FEAT-001": {
     "type": "feature",
@@ -53,7 +122,9 @@
       ]
     },
     "affects": {},
-    "referenced_by": []
+    "referenced_by": [
+      "FEAT-007"
+    ]
   },
   "FEAT-004": {
     "type": "feature",
@@ -65,7 +136,10 @@
       ]
     },
     "affects": {},
-    "referenced_by": []
+    "referenced_by": [
+      "TASK-001",
+      "BUG-002"
+    ]
   },
   "FEAT-005": {
     "type": "feature",
@@ -77,7 +151,9 @@
       ]
     },
     "affects": {},
-    "referenced_by": []
+    "referenced_by": [
+      "BUG-001"
+    ]
   },
   "FEAT-006": {
     "type": "feature",
@@ -89,6 +165,116 @@
       ]
     },
     "affects": {},
+    "referenced_by": []
+  },
+  "FEAT-007": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ],
+      "related": [
+        "FEAT-003"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/layouts/Layout.astro",
+        "src/layouts/BlogLayout.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "BUG-001": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ],
+      "related": [
+        "FEAT-005"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/components/social-links.astro",
+        "src/components/blog-nav.astro",
+        "src/layouts/BlogLayout.astro",
+        "src/components/connect.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "BUG-002": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ],
+      "related": [
+        "FEAT-004"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/layouts/Layout.astro",
+        "src/layouts/BlogLayout.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "BUG-003": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/components/social-links.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "BUG-004": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ]
+    },
+    "affects": {
+      "files": [
+        "tsconfig.json"
+      ]
+    },
+    "referenced_by": []
+  },
+  "BUG-005": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": null,
+    "relations": {
+      "depends_on": [
+        "ADR-001"
+      ]
+    },
+    "affects": {
+      "files": [
+        "src/components/experience.astro"
+      ]
+    },
     "referenced_by": []
   }
 }

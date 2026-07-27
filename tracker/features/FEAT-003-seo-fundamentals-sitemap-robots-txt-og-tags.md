@@ -26,6 +26,8 @@ COMPUTED:
   - ADR-001
   related:
   - FEAT-001
+  referenced_by:
+  - FEAT-007
 ---
 
 # SEO fundamentals: sitemap, robots.txt, og tags

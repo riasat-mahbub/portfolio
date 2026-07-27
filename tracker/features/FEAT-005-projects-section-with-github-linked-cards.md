@@ -23,6 +23,8 @@ UPDATED_BY: null
 COMPUTED:
   depended_by:
   - ADR-001
+  referenced_by:
+  - BUG-001
 ---
 
 # Projects section with GitHub-linked cards
