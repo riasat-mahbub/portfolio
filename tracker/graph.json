@@ -91,6 +91,38 @@
     "affects": {},
     "referenced_by": []
   },
+  "TASK-005": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "TASK-006": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "TASK-007": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "TASK-008": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Low",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
   "FEAT-001": {
     "type": "feature",
     "status": "DONE",
@@ -227,6 +259,22 @@
     "affects": {},
     "referenced_by": []
   },
+  "FEAT-012": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "FEAT-013": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": "Low",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
   "BUG-001": {
     "type": "bug",
     "status": "DONE",
@@ -315,6 +363,30 @@
         "src/components/experience.astro"
       ]
     },
+    "referenced_by": []
+  },
+  "BUG-006": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": "High",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "BUG-007": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": "High",
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "BUG-008": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": "High",
+    "relations": {},
+    "affects": {},
     "referenced_by": []
   }
 }

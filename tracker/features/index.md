@@ -13,5 +13,7 @@
 | FEAT-009 | [FEAT-009-blog-syntax-highlighting-toc-and-presentation-polish](FEAT-009-blog-syntax-highlighting-toc-and-presentation-polish.md) | DONE | blog, ux |
 | FEAT-010 | [FEAT-010-blog-seo-and-accessibility-improvements](FEAT-010-blog-seo-and-accessibility-improvements.md) | DONE | blog, seo, a11y |
 | FEAT-011 | [FEAT-011-copy-link-button-and-related-posts](FEAT-011-copy-link-button-and-related-posts.md) | DONE | blog, ux |
+| FEAT-012 | [FEAT-012-seo-a11y-and-accessibility-improvements](FEAT-012-seo-a11y-and-accessibility-improvements.md) [Medium] | DONE |  |
+| FEAT-013 | [FEAT-013-shared-blog-and-social-link-utilities](FEAT-013-shared-blog-and-social-link-utilities.md) [Low] | DONE |  |
 
-**OPEN/IN_PROGRESS:** 0  **DONE:** 11  **Total:** 11
+**OPEN/IN_PROGRESS:** 0  **DONE:** 13  **Total:** 13
