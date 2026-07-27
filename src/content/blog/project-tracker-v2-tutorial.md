@@ -2,7 +2,7 @@
 title: "From Script to Package: Using the Project Tracker"
 description: "A step-by-step walkthrough of installing, initializing, and using the project tracker CLI — from first entry to agent-integrated workflow."
 tags: ["AI", "Coding Agents", "Python", "Tutorial", "Open Source"]
-publishDate: 2026-08-03
+publishDate: 2026-07-27
 ---
 
 This is Part 2 of a four-part series. [Part 1 covered the v1 system](/blog/project-tracker-v1) — the 286-line script that started it all. Here we walk through installing and using the v2 tool.

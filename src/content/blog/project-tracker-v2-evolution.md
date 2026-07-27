@@ -2,7 +2,7 @@
 title: "From Script to Package: Integration & Evolution"
 description: "Deep-dive into the 9 CLI commands, v1→v2 migration, the Reasonix/OpenCode skill layer, dogfooding the tracker on itself, and the AGENTS.md auto-injection pattern."
 tags: ["AI", "Coding Agents", "Python", "Architecture", "Open Source"]
-publishDate: 2026-08-17
+publishDate: 2026-07-27
 ---
 
 This is Part 4 of a four-part series. [Part 1](/blog/project-tracker-v1) covered the v1 script. [Part 2](/blog/project-tracker-v2-tutorial) was a tutorial. [Part 3](/blog/project-tracker-v2-architecture) covered the architecture and design decisions. Here we cover the remaining pieces: the CLI commands, the v1→v2 migration, the skill layer, dogfooding, and the AGENTS.md injection pattern.

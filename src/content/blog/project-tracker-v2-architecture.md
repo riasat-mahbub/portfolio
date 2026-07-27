@@ -2,7 +2,7 @@
 title: "From Script to Package: Architecture & Design Decisions"
 description: "Deep-dive into Schema 2, graph.json, the 4-layer package architecture, computed backlinks, and the five architectural decisions documented as ADRs in the tracker itself."
 tags: ["AI", "Coding Agents", "Python", "Architecture", "Open Source"]
-publishDate: 2026-08-10
+publishDate: 2026-07-27
 ---
 
 This is Part 3 of a four-part series. [Part 1](/blog/project-tracker-v1) covered the v1 script. [Part 2](/blog/project-tracker-v2-tutorial) was a tutorial on using the v2 tool. Here we go deep on the architecture and the design decisions that shaped it.
