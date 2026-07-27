@@ -2,24 +2,13 @@
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import BlogNav from "@/components/blog-nav.astro";
 import BlogCard from "@/components/blog-card.astro";
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
-import { readingTime } from '@/lib/utils';
+import { getPublishedPosts, sortByDateDesc, withReadingTime } from '@/lib/blog';
+import type { PostWithReadingTime } from '@/lib/blog';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = await getCollection('blog');
-  const sortedPosts = posts
-    .filter(p => !p.data.draft)
-    .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
-    b.data.publishDate.getTime() - a.data.publishDate.getTime()
-  );
-
-  const postsWithReadingTime = sortedPosts.map((post) => ({
-    post,
-    readingTime: readingTime(post.body || ''),
-  }));
-
-  return paginate(postsWithReadingTime, { pageSize: 6 });
+  const posts = await getPublishedPosts();
+  const sorted = sortByDateDesc(posts);
+  return paginate(withReadingTime(sorted), { pageSize: 6 });
 }
 
 const { page } = Astro.props as any;
@@ -38,7 +27,7 @@ const { page } = Astro.props as any;
       {page.data.length > 0 ? (
         <>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            {page.data.map(({ post, readingTime }) => (
+            {page.data.map(({ post, readingTime }: PostWithReadingTime) => (
               <BlogCard post={post} readingTime={readingTime} />
             ))}
           </div>
@@ -51,7 +40,7 @@ const { page } = Astro.props as any;
                   href={page.url.prev || '#'}
                   class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
                     <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" />
                   </svg>
                   Previous
@@ -83,7 +72,7 @@ const { page } = Astro.props as any;
                   class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
                 >
                   Next
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
                     <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z" />
                   </svg>
                 </a>

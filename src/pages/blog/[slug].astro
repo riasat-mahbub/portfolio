@@ -1,42 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
-import { readingTime } from '@/lib/utils';
+import { readingTime, slugify } from '@/lib/utils';
+import { getPublishedPosts, sortByDateDesc, getRelatedPosts } from '@/lib/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const sorted = posts
-    .filter(p => !p.data.draft)
-    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+  const posts = await getPublishedPosts();
+  const sorted = sortByDateDesc(posts);
 
   return sorted.map((post, index) => {
     const prevPost = index < sorted.length - 1 ? { slug: sorted[index + 1].slug, title: sorted[index + 1].data.title } : null;
     const nextPost = index > 0 ? { slug: sorted[index - 1].slug, title: sorted[index - 1].data.title } : null;
+    const relatedPosts = getRelatedPosts(post, sorted);
     return {
       params: { slug: post.slug },
-      props: { post, prevPost, nextPost },
+      props: { post, prevPost, nextPost, relatedPosts },
     };
   });
 }
 
-const { post, prevPost, nextPost } = Astro.props;
+const { post, prevPost, nextPost, relatedPosts } = Astro.props;
 const { Content, headings } = await post.render();
 
 const rt = readingTime(post.body || '');
-
-// Compute related posts by shared tags (in getStaticPaths context)
-const allPosts = await getCollection('blog');
-const relatedPosts = allPosts
-  .filter(p => !p.data.draft && p.slug !== post.slug)
-  .map(p => ({
-    slug: p.slug,
-    title: p.data.title,
-    date: p.data.publishDate,
-    sharedTags: p.data.tags.filter(t => post.data.tags.includes(t)),
-  }))
-  .filter(p => p.sharedTags.length > 0)
-  .sort((a, b) => b.sharedTags.length - a.sharedTags.length)
-  .slice(0, 3);
 ---
 
 <BlogPost {...post.data} readingTime={rt} prevPost={prevPost} nextPost={nextPost} headings={headings} relatedPosts={relatedPosts}>

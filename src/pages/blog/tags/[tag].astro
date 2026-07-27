@@ -2,20 +2,17 @@
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import BlogNav from "@/components/blog-nav.astro";
 import BlogCard from "@/components/blog-card.astro";
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { getPublishedPosts, sortByDateDesc, getAllTags } from '@/lib/blog';
 import { slugify, readingTime } from '@/lib/utils';
+import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const tags = getAllTags(posts);
 
-  const posts = await getCollection('blog');
-  const tags = new Map<string, string>();
-  posts.filter(p => !p.data.draft).forEach(post => post.data.tags.forEach(tag => {
-    if (!tags.has(tag)) tags.set(tag, slugify(tag));
-  }));
-
-  return Array.from(tags.entries()).map(([originalTag, slug]) => {
-    const filtered = posts.filter(post => 
+  return Array.from(tags.entries()).map(([originalTag, _count]) => {
+    const slug = slugify(originalTag);
+    const filtered = posts.filter(post =>
       post.data.tags.some(t => slugify(t) === slug)
     );
     return {
@@ -30,9 +27,7 @@ const { tag, posts } = Astro.props as {
   posts: CollectionEntry<'blog'>[];
 };
 
-const sortedPosts = posts.sort(
-  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
-);
+const sortedPosts = sortByDateDesc(posts);
 ---
 
 <BlogLayout title={`Posts tagged "${tag}" - Blog`} description={`Blog posts tagged with "${tag}"`} pageType="website">

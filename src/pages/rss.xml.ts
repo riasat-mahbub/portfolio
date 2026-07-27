@@ -1,13 +1,9 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getPublishedPosts, sortByDateDesc } from '@/lib/blog';
 
 export async function GET(context: { site: URL }) {
-  const posts = await getCollection('blog');
-  const sortedPosts = posts
-    .filter(p => !p.data.draft)
-    .sort(
-    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
-  );
+  const posts = await getPublishedPosts();
+  const sortedPosts = sortByDateDesc(posts);
 
   return rss({
     title: "Riasat Mahbub's Blog",

@@ -1,21 +1,11 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import BlogNav from "@/components/blog-nav.astro";
-import { getCollection } from 'astro:content';
+import { getPublishedPosts, getAllTags } from '@/lib/blog';
 import { slugify } from '@/lib/utils';
 
-const posts = await getCollection('blog');
-
-// Collect all tags with post counts (excluding drafts)
-const tagMap = new Map<string, number>();
-posts.filter(p => !p.data.draft).forEach(post => {
-  post.data.tags.forEach(tag => {
-    const key = tag.toLowerCase();
-    tagMap.set(key, (tagMap.get(key) || 0) + 1);
-  });
-});
-
-const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1] - a[1]);
+const posts = await getPublishedPosts();
+const sortedTags = Array.from(getAllTags(posts).entries()).sort((a, b) => b[1] - a[1]);
 ---
 
 <BlogLayout title="Tags - Blog" description="Browse blog posts by tag" pageType="website">
