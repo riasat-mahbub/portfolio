@@ -3,57 +3,29 @@
     "type": "adr",
     "status": "DONE",
     "priority": null,
-    "relations": {
-      "enables": [
-        "FEAT-001",
-        "FEAT-003",
-        "FEAT-005"
-      ],
-      "relates_to": [
-        "FEAT-002",
-        "FEAT-004",
-        "FEAT-006"
-      ]
-    },
-    "affects": {
-      "files": [
-        "astro.config.mjs",
-        "package.json",
-        "tsconfig.json",
-        "tailwind.config.mjs"
-      ]
-    },
-    "referenced_by": []
+    "relations": {},
+    "affects": {},
+    "referenced_by": [
+      "FEAT-001",
+      "FEAT-002",
+      "FEAT-003",
+      "FEAT-004",
+      "FEAT-005",
+      "FEAT-006"
+    ]
   },
   "FEAT-001": {
     "type": "feature",
     "status": "DONE",
     "priority": null,
     "relations": {
-      "relates_to": [
-        "FEAT-003",
-        "FEAT-006"
+      "depends_on": [
+        "ADR-001"
       ]
     },
-    "affects": {
-      "files": [
-        "src/pages/blog/[...page].astro",
-        "src/pages/blog/[slug].astro",
-        "src/pages/blog/tags/index.astro",
-        "src/pages/blog/tags/[tag].astro",
-        "src/pages/rss.xml.ts",
-        "src/layouts/BlogLayout.astro",
-        "src/layouts/BlogPost.astro",
-        "src/components/blog-card.astro",
-        "src/components/blog-nav.astro",
-        "src/components/blog-section.astro",
-        "src/content/config.ts"
-      ]
-    },
+    "affects": {},
     "referenced_by": [
-      "ADR-001",
-      "FEAT-003",
-      "FEAT-006"
+      "FEAT-003"
     ]
   },
   "FEAT-002": {
@@ -61,64 +33,39 @@
     "status": "DONE",
     "priority": null,
     "relations": {
-      "relates_to": [
-        "FEAT-004"
+      "depends_on": [
+        "ADR-001"
       ]
     },
-    "affects": {
-      "files": [
-        "src/components/skills.astro",
-        "src/pages/index.astro",
-        "tailwind.config.mjs"
-      ]
-    },
-    "referenced_by": [
-      "ADR-001",
-      "FEAT-004",
-      "FEAT-005"
-    ]
+    "affects": {},
+    "referenced_by": []
   },
   "FEAT-003": {
     "type": "feature",
     "status": "DONE",
     "priority": null,
     "relations": {
-      "relates_to": [
+      "depends_on": [
+        "ADR-001"
+      ],
+      "related": [
         "FEAT-001"
       ]
     },
-    "affects": {
-      "files": [
-        "astro.config.mjs",
-        "public/robots.txt",
-        "src/layouts/Layout.astro",
-        "src/components/nav.astro"
-      ]
-    },
-    "referenced_by": [
-      "ADR-001",
-      "FEAT-001"
-    ]
+    "affects": {},
+    "referenced_by": []
   },
   "FEAT-004": {
     "type": "feature",
     "status": "DONE",
     "priority": null,
     "relations": {
-      "relates_to": [
-        "FEAT-002"
+      "depends_on": [
+        "ADR-001"
       ]
     },
-    "affects": {
-      "files": [
-        "src/components/theme-toggle.astro",
-        "tailwind.config.mjs"
-      ]
-    },
-    "referenced_by": [
-      "ADR-001",
-      "FEAT-002"
-    ]
+    "affects": {},
+    "referenced_by": []
   },
   "FEAT-005": {
     "type": "feature",
@@ -126,37 +73,22 @@
     "priority": null,
     "relations": {
       "depends_on": [
-        "FEAT-002"
+        "ADR-001"
       ]
     },
-    "affects": {
-      "files": [
-        "src/components/projects.astro",
-        "src/pages/index.astro"
-      ]
-    },
-    "referenced_by": [
-      "ADR-001"
-    ]
+    "affects": {},
+    "referenced_by": []
   },
   "FEAT-006": {
     "type": "feature",
     "status": "DONE",
     "priority": null,
     "relations": {
-      "relates_to": [
-        "FEAT-001"
+      "depends_on": [
+        "ADR-001"
       ]
     },
-    "affects": {
-      "files": [
-        "src/components/nav.astro",
-        "src/pages/index.astro"
-      ]
-    },
-    "referenced_by": [
-      "ADR-001",
-      "FEAT-001"
-    ]
+    "affects": {},
+    "referenced_by": []
   }
 }

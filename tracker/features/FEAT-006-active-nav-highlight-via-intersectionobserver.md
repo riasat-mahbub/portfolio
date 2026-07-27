@@ -9,38 +9,32 @@ SEVERITY: null
 EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
-TAGS: null
+TAGS:
+- nav
+- ux
+- scroll
 RELATIONS:
-  relates_to:
-  - FEAT-001
-AFFECTS:
-  files:
-  - src/components/nav.astro
-  - src/pages/index.astro
+  depends_on:
+  - ADR-001
+AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
-  referenced_by:
+  depended_by:
   - ADR-001
-  - FEAT-001
 ---
 
 # Active nav highlight via IntersectionObserver
 
 ## Background
 
-
-## Investigation
-
-
-## Decision
-
+Single-page site with 7 sections needed smooth navigation and scroll-aware UI.
 
 ## Implementation
 
+- fd74051 (2025-10-10): rebuilt navbar with IntersectionObserver for active section highlighting, smooth scroll on nav click, scroll-shrink effect (nav collapses from full-width to 680px minimum), passive scroll listener for performance
 
 ## Verification
 
-
-## Follow-up
+Clicking nav links smooth-scrolls to sections. Active section is highlighted with a green dot indicator. Nav shrinks on scroll and returns to full width at top.

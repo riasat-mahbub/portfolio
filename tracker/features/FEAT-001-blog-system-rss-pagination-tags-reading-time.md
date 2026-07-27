@@ -9,49 +9,45 @@ SEVERITY: null
 EFFORT: L
 OWNER: null
 CONFIDENCE: Medium
-TAGS: null
+TAGS:
+- blog
+- rss
+- pagination
 RELATIONS:
-  relates_to:
-  - FEAT-003
-  - FEAT-006
-AFFECTS:
-  files:
-  - src/pages/blog/[...page].astro
-  - src/pages/blog/[slug].astro
-  - src/pages/blog/tags/index.astro
-  - src/pages/blog/tags/[tag].astro
-  - src/pages/rss.xml.ts
-  - src/layouts/BlogLayout.astro
-  - src/layouts/BlogPost.astro
-  - src/components/blog-card.astro
-  - src/components/blog-nav.astro
-  - src/components/blog-section.astro
-  - src/content/config.ts
+  depends_on:
+  - ADR-001
+AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
-  referenced_by:
+  depended_by:
   - ADR-001
+  referenced_by:
   - FEAT-003
-  - FEAT-006
 ---
 
 # Blog system: RSS, pagination, tags, reading time
 
 ## Background
 
+Original blog was a single page listing. Needed RSS for syndication, tag-based filtering, pagination for scale, and a dedicated reading experience.
 
 ## Investigation
 
-
-## Decision
-
+Astro content collections (MDX), @astrojs/rss for feed generation, dynamic route params for tag pages and pagination.
 
 ## Implementation
 
+- ad30a7b (2026-02-04): initial blog page with MDX content collection
+- ad14791 (2026-02-04): first blog post (best-time-to-buy-and-sell-stock)
+- dc2340e (2026-07-27): full overhaul — paginated listing at /blog (6 posts/page), tag pages at /blog/tags/ and /blog/tags/:slug, RSS at /rss.xml via @astrojs/rss, reading time estimates, prev/next post nav, BlogCard component, BlogNav, BlogLayout
 
 ## Verification
 
+`astro build` generates index.html at /blog, RSS XML at /rss.xml, tag pages, paginated pages. Blog card renders on home page, listing, and tag filters.
 
 ## Follow-up
+
+- Only 1 blog post — add more content
+- Extract shared slugify() utility

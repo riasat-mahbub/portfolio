@@ -9,22 +9,22 @@ SEVERITY: null
 EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
-TAGS: null
+TAGS:
+- seo
+- meta
 RELATIONS:
-  relates_to:
+  depends_on:
+  - ADR-001
+  related:
   - FEAT-001
-AFFECTS:
-  files:
-  - astro.config.mjs
-  - public/robots.txt
-  - src/layouts/Layout.astro
-  - src/components/nav.astro
+AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
-  referenced_by:
+  depended_by:
   - ADR-001
+  related:
   - FEAT-001
 ---
 
@@ -32,17 +32,13 @@ COMPUTED:
 
 ## Background
 
-
-## Investigation
-
-
-## Decision
-
+Portfolio lacked basic SEO — no sitemap, no robots.txt, incomplete Open Graph tags. Social previews (Twitter/LinkedIn/Discord) showed no image.
 
 ## Implementation
 
+- 17f8831 (2026-07-27): @astrojs/sitemap integration, robots.txt, og:image meta tag using profile photo
+- b2313c3 (2026-07-27): og:url meta tag added to Layout.astro
 
 ## Verification
 
-
-## Follow-up
+`astro build` → dist/ contains sitemap-index.xml, sitemap-0.xml, robots.txt. Open Graph debugger shows title, description, image, and URL.

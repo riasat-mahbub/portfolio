@@ -9,38 +9,32 @@ SEVERITY: null
 EFFORT: M
 OWNER: null
 CONFIDENCE: Medium
-TAGS: null
+TAGS:
+- theme
+- dark-mode
+- css
 RELATIONS:
-  relates_to:
-  - FEAT-002
-AFFECTS:
-  files:
-  - src/components/theme-toggle.astro
-  - tailwind.config.mjs
+  depends_on:
+  - ADR-001
+AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
-  referenced_by:
+  depended_by:
   - ADR-001
-  - FEAT-002
 ---
 
 # Dark mode with theme toggle
 
 ## Background
 
-
-## Investigation
-
-
-## Decision
-
+Initial portfolio only had dark theme. Needed light mode toggle for accessibility and user preference.
 
 ## Implementation
 
+- ecab478 (2025-10-17): theme-toggle.astro component, CSS custom properties (--background, --sec, --white, --white-icon, --white-icon-tr), Tailwind `[data-theme="dark"]` class strategy, light mode overrides for card backgrounds, borders, and hover states
 
 ## Verification
 
-
-## Follow-up
+Toggle button switches between light and dark themes. All sections (home, projects, skills, experience, education, blog, connect) render correctly in both modes.

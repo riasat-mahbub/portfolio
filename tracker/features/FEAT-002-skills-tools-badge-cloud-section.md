@@ -9,40 +9,31 @@ SEVERITY: null
 EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
-TAGS: null
+TAGS:
+- skills
+- ui
 RELATIONS:
-  relates_to:
-  - FEAT-004
-AFFECTS:
-  files:
-  - src/components/skills.astro
-  - src/pages/index.astro
-  - tailwind.config.mjs
+  depends_on:
+  - ADR-001
+AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
 COMPUTED:
-  referenced_by:
+  depended_by:
   - ADR-001
-  - FEAT-004
-  - FEAT-005
 ---
 
 # Skills & Tools badge cloud section
 
 ## Background
 
-
-## Investigation
-
-
-## Decision
-
+Portfolio needed a Skills & Tools section to showcase technical expertise in a visual, scannable format.
 
 ## Implementation
 
+- 00d1e2f (2026-07-27): skills.astro with 4 categories (Languages, Frontend, Backend, Tools & Platforms), badge cloud pills with hover effects, integrated between Projects and Experience on index.astro
 
 ## Verification
 
-
-## Follow-up
+Section renders as a responsive grid of category cards with rounded badge pills. Hover animation works on desktop.
