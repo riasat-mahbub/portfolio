@@ -9,7 +9,6 @@ interface Experience {
   institution: string;
   year: string;
   description: string;
-  logo_bg: string;
 }
 
 const experiences: Experience[] = [
@@ -19,7 +18,6 @@ const experiences: Experience[] = [
     institution: "Dalhousie University",
     year: "2023-2025",
     description: "Conducted research on code quality, code smells, and refactoring practices in simulation modeling systems. Worked with LLM agents and statistical techniques to analyze large-scale software repositories. Collaborated with planners and civil engineers in a cross-disciplinary research environment.",
-    logo_bg: "white"
   },
   {
     role: "Associate Software Engineer",
@@ -27,7 +25,6 @@ const experiences: Experience[] = [
     institution: "Brain Station 23",
     year: "2022-2023",
     description: "At Brain Station 23, I learned to ship stable, reliable applications while writing clean and maintainable code. Most of my work was on web development with Angular and Laravel, and some other projects with Ionic and Moodle plugins",
-    logo_bg: "white"
   },
 ];
 ---
@@ -45,7 +42,7 @@ const experiences: Experience[] = [
     <div class="grid gap-8 md:gap-12">
       {experiences.map((item) => (
         <div class="border border-[var(--white-icon-tr)] rounded-xl p-4 md:p-6 bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition duration-300 flex flex-col md:flex-row items-center">
-          <div class={`w-16 h-16 md:w-28 md:h-28 mb-4 md:mb-0 md:mr-4 rounded-lg flex items-center justify-center ${item.logo_bg === 'white' ? 'bg-white' : item.logo_bg === 'transparent' ? 'bg-transparent' : `bg-${item.logo_bg}`}`}>
+          <div class="w-16 h-16 md:w-28 md:h-28 mb-4 md:mb-0 md:mr-4 rounded-lg flex items-center justify-center bg-white">
             <Image src={item.image} alt={item.institution} class="w-12 h-12 md:w-20 md:h-20" />
           </div>
           <div class="flex flex-col flex-1 text-center md:text-left">
