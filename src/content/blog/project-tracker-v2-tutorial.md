@@ -14,8 +14,8 @@ This is Part 2 of a four-part series. [Part 1 covered the v1 system](/blog/proje
 The tracker CLI is a pip-installable Python package with a single dependency (`pyyaml`):
 
 ```bash
-git clone git@github.com:riasat-mahbub/projet-tracker-graph.git ~/Projects/projet-tracker-graph
-pip install -e ~/Projects/projet-tracker-graph
+git clone git@github.com:riasat-mahbub/project-tracker-graph.git ~/Projects/project-tracker-graph
+pip install -e ~/Projects/project-tracker-graph
 ```
 
 Verify:

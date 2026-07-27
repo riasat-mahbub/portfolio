@@ -264,4 +264,4 @@ The dogfooding even uncovered a design issue: the Python package was named `trac
 | Agent integration | Manual | Skill layer + AGENTS.md auto-injection |
 | Self-tracking | No | 13 entries in its own tracker/ |
 
-The project is MIT-licensed at [github.com/riasat-mahbub/projet-tracker-graph](https://github.com/riasat-mahbub/projet-tracker-graph). The skill layer is at [github.com/riasat-mahbub/project-tracker-skill](https://github.com/riasat-mahbub/project-tracker-skill).
+The project is MIT-licensed at [github.com/riasat-mahbub/project-tracker-graph](https://github.com/riasat-mahbub/project-tracker-graph). The skill layer is at [github.com/riasat-mahbub/project-tracker-skill](https://github.com/riasat-mahbub/project-tracker-skill).
