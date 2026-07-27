@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '@/lib/utils';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -24,14 +25,8 @@ function truncateTitle(title: string, maxLength: number = 60) {
   >
     <div>
       <div class="flex items-center gap-2 mb-3">
-        <span class={`px-2 py-1 rounded text-xs font-medium ${
-          post.data.difficulty === 'Easy' ? 'bg-green-500 text-white' :
-          post.data.difficulty === 'Medium' ? 'bg-yellow-500 text-white' : 'bg-red-500 text-white'
-        }`}>
-          {post.data.difficulty}
-        </span>
         <span class="text-xs text-[var(--white-icon)]">
-          {post.data.publishDate.toLocaleDateString()}
+          {formatDate(post.data.publishDate)}
         </span>
         {readingTime && (
           <>
@@ -66,6 +61,7 @@ function truncateTitle(title: string, maxLength: number = 60) {
         viewBox="0 0 24 24"
         fill="currentColor"
         class="size-6 sm:size-7"
+        aria-hidden="true"
       >
         <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
       </svg>

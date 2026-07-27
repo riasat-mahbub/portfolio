@@ -4,15 +4,13 @@ import BlogNav from "@/components/blog-nav.astro";
 import BlogCard from "@/components/blog-card.astro";
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { slugify, readingTime } from '@/lib/utils';
 
 export async function getStaticPaths() {
-  function slugify(text: string): string {
-    return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-  }
 
   const posts = await getCollection('blog');
   const tags = new Map<string, string>();
-  posts.forEach(post => post.data.tags.forEach(tag => {
+  posts.filter(p => !p.data.draft).forEach(post => post.data.tags.forEach(tag => {
     if (!tags.has(tag)) tags.set(tag, slugify(tag));
   }));
 
@@ -37,8 +35,8 @@ const sortedPosts = posts.sort(
 );
 ---
 
-<BlogLayout title={`Posts tagged "${tag}" - Blog`} description={`Blog posts tagged with "${tag}"`}>
-  <BlogNav />
+<BlogLayout title={`Posts tagged "${tag}" - Blog`} description={`Blog posts tagged with "${tag}"`} pageType="website">
+  <BlogNav currentPath={Astro.url.pathname} />
   <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
     <div class="max-w-5xl mx-auto px-6 py-12">
       <div class="mb-8">
@@ -53,7 +51,7 @@ const sortedPosts = posts.sort(
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
         {sortedPosts.map((post) => (
-          <BlogCard post={post} />
+          <BlogCard post={post} readingTime={readingTime(post.body || '')} />
         ))}
       </div>
     </div>

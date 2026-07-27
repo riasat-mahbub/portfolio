@@ -1,7 +1,6 @@
 ---
 title: "Best Time to Buy and Sell Stock - Array Problem"
 description: "Finding maximum profit from a single buy-sell transaction using optimized approaches"
-difficulty: "Easy"
 tags: ["Array", "Dynamic Programming", "Two Pointers"]
 publishDate: 2026-02-04
 ---

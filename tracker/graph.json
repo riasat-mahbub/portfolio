@@ -83,6 +83,14 @@
     },
     "referenced_by": []
   },
+  "TASK-004": {
+    "type": "task",
+    "status": "DONE",
+    "priority": null,
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
   "FEAT-001": {
     "type": "feature",
     "status": "DONE",
@@ -185,6 +193,38 @@
         "src/layouts/BlogLayout.astro"
       ]
     },
+    "referenced_by": []
+  },
+  "FEAT-008": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": null,
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "FEAT-009": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": null,
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "FEAT-010": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": null,
+    "relations": {},
+    "affects": {},
+    "referenced_by": []
+  },
+  "FEAT-011": {
+    "type": "feature",
+    "status": "DONE",
+    "priority": null,
+    "relations": {},
+    "affects": {},
     "referenced_by": []
   },
   "BUG-001": {

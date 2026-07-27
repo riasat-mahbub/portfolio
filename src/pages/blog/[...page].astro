@@ -4,29 +4,29 @@ import BlogNav from "@/components/blog-nav.astro";
 import BlogCard from "@/components/blog-card.astro";
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { readingTime } from '@/lib/utils';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const posts = await getCollection('blog');
-  const sortedPosts = posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+  const sortedPosts = posts
+    .filter(p => !p.data.draft)
+    .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
     b.data.publishDate.getTime() - a.data.publishDate.getTime()
   );
 
-  // Compute reading time for each post
-  const postsWithReadingTime = sortedPosts.map((post) => {
-    const bodyText = post.body || '';
-    const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
-    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-    return { post, readingTime };
-  });
+  const postsWithReadingTime = sortedPosts.map((post) => ({
+    post,
+    readingTime: readingTime(post.body || ''),
+  }));
 
   return paginate(postsWithReadingTime, { pageSize: 6 });
 }
 
-const { page } = Astro.props;
+const { page } = Astro.props as any;
 ---
 
-<BlogLayout title="Blog - Riasat Mahbub" description="My journey through coding challenges and problem-solving insights.">
-  <BlogNav />
+<BlogLayout title="Blog - Riasat Mahbub" description="My journey through coding challenges and problem-solving insights." pageType="website">
+  <BlogNav currentPath={Astro.url.pathname} />
   <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
     <div class="max-w-5xl mx-auto px-6 py-12">
       <h2 class="text-lg text-[var(--sec)] mb-2">My Journey</h2>
@@ -57,7 +57,7 @@ const { page } = Astro.props;
                   Previous
                 </a>
               ) : (
-                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed">
+                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed" aria-disabled="true">
                   Previous
                 </span>
               )}
@@ -88,7 +88,7 @@ const { page } = Astro.props;
                   </svg>
                 </a>
               ) : (
-                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed">
+                <span class="px-4 py-2 rounded-full border border-transparent text-[var(--white-icon)]/40 text-sm cursor-not-allowed" aria-disabled="true">
                   Next
                 </span>
               )}

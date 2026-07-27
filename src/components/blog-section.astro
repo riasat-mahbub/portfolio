@@ -1,19 +1,18 @@
 ---
 import BlogCard from "@/components/blog-card.astro";
 import { getCollection } from 'astro:content';
+import { readingTime } from '@/lib/utils';
 
 const posts = await getCollection('blog');
 const latestPosts = posts
+  .filter(p => !p.data.draft)
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 4);
 
-// Compute reading time for each post
-const postsWithReadingTime = latestPosts.map((post) => {
-  const bodyText = post.body || '';
-  const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
-  const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-  return { post, readingTime };
-});
+const postsWithReadingTime = latestPosts.map((post) => ({
+  post,
+  readingTime: readingTime(post.body || ''),
+}));
 ---
 
 <section class="py-12 border-t border-[#ffffff10] text-[var(--white)] max-w-5xl mx-auto my-10 px-4 sm:px-6 lg:px-0" id="blog">
@@ -31,7 +30,7 @@ const postsWithReadingTime = latestPosts.map((post) => {
       </div>
     ) : (
       <div class="text-center py-12">
-        <p class="text-[var(--white-icon)]">Coming soon... Currently working on LeetCode solutions!</p>
+        <p class="text-[var(--white-icon)]">No posts yet. Check back soon!</p>
       </div>
     )}
   </div>

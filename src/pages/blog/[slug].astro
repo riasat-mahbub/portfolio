@@ -1,10 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
+import { readingTime } from '@/lib/utils';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const sorted = posts.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+  const sorted = posts
+    .filter(p => !p.data.draft)
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
   return sorted.map((post, index) => {
     const prevPost = index < sorted.length - 1 ? { slug: sorted[index + 1].slug, title: sorted[index + 1].data.title } : null;
@@ -17,14 +20,25 @@ export async function getStaticPaths() {
 }
 
 const { post, prevPost, nextPost } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
-// Reading time: average 200 words per minute
-const bodyText = post.body || '';
-const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
-const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+const rt = readingTime(post.body || '');
+
+// Compute related posts by shared tags (in getStaticPaths context)
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(p => !p.data.draft && p.slug !== post.slug)
+  .map(p => ({
+    slug: p.slug,
+    title: p.data.title,
+    date: p.data.publishDate,
+    sharedTags: p.data.tags.filter(t => post.data.tags.includes(t)),
+  }))
+  .filter(p => p.sharedTags.length > 0)
+  .sort((a, b) => b.sharedTags.length - a.sharedTags.length)
+  .slice(0, 3);
 ---
 
-<BlogPost {...post.data} readingTime={readingTime} prevPost={prevPost} nextPost={nextPost}>
+<BlogPost {...post.data} readingTime={rt} prevPost={prevPost} nextPost={nextPost} headings={headings} relatedPosts={relatedPosts}>
   <Content />
 </BlogPost>

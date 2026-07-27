@@ -1,33 +1,35 @@
-
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import BlogNav from "@/components/blog-nav.astro";
-// src/layouts/BlogPost.astro
 import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import { slugify, formatDate } from '@/lib/utils';
 
-function slugify(text: string): string {
-  return text.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-}
-
-// This automatically syncs Props with your Zod schema
 type Props = CollectionEntry<'blog'>['data'] & {
   readingTime: number;
   prevPost?: { slug: string; title: string } | null;
   nextPost?: { slug: string; title: string } | null;
+  headings?: MarkdownHeading[];
+  relatedPosts?: { slug: string; title: string; date: Date; sharedTags: string[] }[];
 };
 
-const { title, description, difficulty, tags, publishDate, readingTime, prevPost, nextPost } = Astro.props;
+const { title, description, tags, publishDate, updatedDate, coverImage, readingTime, prevPost, nextPost, headings, relatedPosts } = Astro.props;
 
-
-const difficultyColors = {
-  Easy: 'bg-green-500 text-white',
-  Medium: 'bg-yellow-500 text-white', 
-  Hard: 'bg-red-500 text-white'
-};
+const toc = (headings || []).filter(h => h.depth >= 2 && h.depth <= 3);
 ---
 
-<BlogLayout title={`${title} - Blog`} description={description}>
-  <BlogNav />
+<BlogLayout title={`${title} - Blog`} description={description} image={coverImage} pageType="article">
+  <BlogNav currentPath={Astro.url.pathname} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: description,
+    datePublished: publishDate.toISOString(),
+    ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+    author: { '@type': 'Person', name: 'Riasat Mahbub' },
+    ...(coverImage ? { image: coverImage } : {}),
+  })} />
   <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
     <div class="max-w-5xl mx-auto px-6 py-12">
       <div class="mb-8">
@@ -35,9 +37,6 @@ const difficultyColors = {
         <p class="text-lg text-[var(--white-icon)] mb-4">{description}</p>
         
         <div class="flex flex-wrap gap-2 mb-4">
-          <span class={`px-3 py-1 rounded-full text-sm font-medium ${difficultyColors[difficulty]}`}>
-            {difficulty}
-          </span>
           {tags.map(tag => (
             <a href={`/blog/tags/${slugify(tag)}`} class="px-3 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded-full text-sm hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)]/50 transition-colors">
               {tag}
@@ -46,12 +45,47 @@ const difficultyColors = {
         </div>
         
         <div class="flex items-center gap-3 text-sm text-[var(--white-icon)]">
-          <span>{publishDate.toLocaleDateString()}</span>
+          <span>{formatDate(publishDate)}</span>
+          {updatedDate && (
+            <>
+              <span class="w-1 h-1 rounded-full bg-[var(--white-icon-tr)]"></span>
+              <span>Updated {formatDate(updatedDate)}</span>
+            </>
+          )}
           <span class="w-1 h-1 rounded-full bg-[var(--white-icon-tr)]"></span>
           <span>{readingTime} min read</span>
+          <span class="w-1 h-1 rounded-full bg-[var(--white-icon-tr)]"></span>
+          <button
+            id="copy-link-btn"
+            class="text-[var(--white-icon)] hover:text-purple-400 transition-colors text-sm"
+            title="Copy link"
+            aria-label="Copy link to this post"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+              <path d="M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H20.9998C21.5521 2 21.9998 2.44772 21.9998 3V17C21.9998 17.5523 21.5521 18 20.9998 18H17.9998V20.9991C17.9998 21.5519 17.549 21.9993 16.993 21.9993L3.00666 22C2.45059 21.9998 2 21.5516 2 20.9991L2.0026 7.00087C2.0027 6.44811 2.45264 6 3.01042 6H6.9998ZM8.9998 6H16.9998V16H19.9998V4H8.9998V6Z"/>
+            </svg>
+          </button>
         </div>
       </div>
       
+      {toc.length > 1 && (
+        <nav class="mb-8 p-4 rounded-xl border border-[var(--white-icon-tr)] bg-[#1414149c]" aria-label="Table of Contents">
+          <h2 class="text-sm font-semibold text-[var(--white)] mb-3 uppercase tracking-wider">On this page</h2>
+          <ul class="space-y-1.5">
+            {toc.map(heading => (
+              <li class={`${heading.depth === 3 ? 'ml-4' : ''}`}>
+                <a
+                  href={`#${heading.slug}`}
+                  class="text-sm text-[var(--white-icon)] hover:text-purple-400 transition-colors"
+                >
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
       <div class="prose prose-lg max-w-none">
         <slot />
       </div>
@@ -61,7 +95,7 @@ const difficultyColors = {
         <div>
           {prevPost && (
             <a href={`/blog/${prevPost.slug}`} class="group flex items-center gap-2 text-[var(--white-icon)] hover:text-purple-400 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0" aria-hidden="true">
                 <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3646L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z" />
               </svg>
               <div class="text-left">
@@ -74,7 +108,7 @@ const difficultyColors = {
         <div class="md:text-right">
           {nextPost && (
             <a href={`/blog/${nextPost.slug}`} class="group flex items-center gap-2 md:flex-row-reverse text-[var(--white-icon)] hover:text-purple-400 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0" aria-hidden="true">
                 <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z" />
               </svg>
               <div class="text-right">
@@ -86,6 +120,27 @@ const difficultyColors = {
         </div>
       </div>
 
+      {relatedPosts && relatedPosts.length > 0 && (
+        <div class="mt-12 pt-8 border-t border-[var(--white-icon-tr)]">
+          <h2 class="text-lg font-semibold text-[var(--white)] mb-4">Related Posts</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {relatedPosts.map(rp => (
+              <a
+                href={`/blog/${rp.slug}`}
+                class="block p-4 rounded-xl border border-[var(--white-icon-tr)] bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition-all duration-300 group"
+              >
+                <p class="text-sm font-medium text-[var(--white)] group-hover:text-purple-400 transition-colors line-clamp-2 mb-1">
+                  {rp.title}
+                </p>
+                <p class="text-xs text-[var(--white-icon)]">
+                  {rp.sharedTags.length} shared tag{rp.sharedTags.length !== 1 ? 's' : ''}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div class="mt-6 text-center">
         <a href="/blog" class="text-purple-400 hover:text-purple-300 hover:underline transition-colors text-sm">
           ← Back to Blog
@@ -94,6 +149,18 @@ const difficultyColors = {
     </div>
   </main>
 </BlogLayout>
+
+<script>
+  document.getElementById('copy-link-btn')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById('copy-link-btn');
+      if (btn) {
+        btn.classList.add('text-green-400');
+        setTimeout(() => btn.classList.remove('text-green-400'), 1500);
+      }
+    });
+  });
+</script>
 
 <style is:global>
   .prose {
