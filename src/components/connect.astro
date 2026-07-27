@@ -62,7 +62,7 @@
                 aria-label={link.label}
               >
                 <div class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out">
-                  <div set:html={link.icon} />
+                  <div aria-hidden="true" set:html={link.icon} />
                 </div>
               </a>
             ))
