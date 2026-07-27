@@ -158,29 +158,5 @@
       "ADR-001",
       "FEAT-001"
     ]
-  },
-  "FEAT-007": {
-    "type": "feature",
-    "status": "PROPOSED",
-    "priority": null,
-    "relations": {},
-    "affects": {},
-    "referenced_by": []
-  },
-  "FEAT-008": {
-    "type": "feature",
-    "status": "PROPOSED",
-    "priority": null,
-    "relations": {},
-    "affects": {},
-    "referenced_by": []
-  },
-  "FEAT-009": {
-    "type": "feature",
-    "status": "PROPOSED",
-    "priority": null,
-    "relations": {},
-    "affects": {},
-    "referenced_by": []
   }
 }
