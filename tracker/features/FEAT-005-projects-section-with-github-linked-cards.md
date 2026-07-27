@@ -34,6 +34,7 @@ Projects were scattered across the site. Needed a unified card layout with live 
 ## Implementation
 
 - b2ea1a3 (2026-07-27): merged into unified card layout, 5 projects with descriptions and tags, research subsection with 4 papers, external link arrows, "More projects on GitHub" CTA
+- ca73fde (2026-07-27): cleanup — wrap paper description in conditional rendering
 
 ## Verification
 

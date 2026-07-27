@@ -34,6 +34,7 @@ Initial portfolio only had dark theme. Needed light mode toggle for accessibilit
 ## Implementation
 
 - ecab478 (2025-10-17): theme-toggle.astro component, CSS custom properties (--background, --sec, --white, --white-icon, --white-icon-tr), Tailwind `[data-theme="dark"]` class strategy, light mode overrides for card backgrounds, borders, and hover states
+- a53bfd7 (2026-07-27): cleanup — extract CSS variables and light mode overrides into shared global.css
 
 ## Verification
 

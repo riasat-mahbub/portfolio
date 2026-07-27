@@ -34,6 +34,7 @@ Single-page site with 7 sections needed smooth navigation and scroll-aware UI.
 ## Implementation
 
 - fd74051 (2025-10-10): rebuilt navbar with IntersectionObserver for active section highlighting, smooth scroll on nav click, scroll-shrink effect (nav collapses from full-width to 680px minimum), passive scroll listener for performance
+- 9197e0c (2026-07-27): cleanup — guard nav width with Math.max to prevent negative values
 
 ## Verification
 

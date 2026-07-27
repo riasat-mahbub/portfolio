@@ -33,6 +33,7 @@ Portfolio needed a Skills & Tools section to showcase technical expertise in a v
 ## Implementation
 
 - 00d1e2f (2026-07-27): skills.astro with 4 categories (Languages, Frontend, Backend, Tools & Platforms), badge cloud pills with hover effects, integrated between Projects and Experience on index.astro
+- a53bfd7 (2026-07-27): cleanup — remove unused shiny-sec class
 
 ## Verification
 

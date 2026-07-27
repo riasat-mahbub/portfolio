@@ -53,6 +53,9 @@ Astro 5 (static output) + Tailwind CSS + React 19 + MDX for blog content. All in
 - Tailwind dark mode via `[data-theme="dark"]` class
 - Sharp for image optimization
 - GitHub Actions deploys to GitHub Pages on push to master
+- 19234ca (2026-07-27): cleanup — update tsconfig moduleResolution to bundler
+- a53bfd7 (2026-07-27): cleanup — extract shared global.css
+- 9197e0c (2026-07-27): cleanup — add favicon links
 
 ## Verification
 
