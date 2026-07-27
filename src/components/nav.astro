@@ -8,10 +8,10 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Home", href: "#home", icon: `<svg ...></svg>` },
   { label: "Projects", href: "#projects", icon: `<svg ...></svg>` },
+  { label: "Blog", href: "#blog", icon: `<svg ...></svg>` },
   { label: "Skills", href: "#skills", icon: `<svg ...></svg>` },
   { label: "Experience", href: "#experience", icon: `<svg ...></svg>` },
   { label: "Education", href: "#education", icon: `<svg ...></svg>` },
-  { label: "Blog", href: "#blog", icon: `<svg ...></svg>` },
   { label: "Connect", href: "#connect", icon: `<svg ...></svg>` },
 ];
 ---
@@ -44,7 +44,7 @@ const navItems: NavItem[] = [
 <script>
   const nav = document.getElementById("main-nav");
   const maxScroll = 1000;
-  let rafId = null;
+  let rafId:any = null;
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
