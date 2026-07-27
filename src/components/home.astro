@@ -1,5 +1,6 @@
 ---
 import SocialLinks from "@/components/social-links.astro";
+import { Image } from "astro:assets";
 import riasat from "../../public/riasat.png";
 ---
 
@@ -32,11 +33,12 @@ import riasat from "../../public/riasat.png";
 
     <!-- Image Section -->
     <div class="hidden md:flex lg:flex-shrink-0 justify-center mb-6 lg:mb-0">
-      <img 
-        src={riasat.src} 
-        alt="Riasat Mahbub" 
-        class="w-68 h-68 rounded-full border-4 border-[var(--white)] object-cover
-               md:flex lg:flex"
+      <Image
+        src={riasat}
+        alt="Riasat Mahbub"
+        width={272}
+        height={272}
+        class="rounded-full border-4 border-[var(--white)] object-cover"
       />
     </div>
 
