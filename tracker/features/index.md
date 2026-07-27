@@ -9,5 +9,9 @@
 | FEAT-005 | [FEAT-005-projects-section-with-github-linked-cards](FEAT-005-projects-section-with-github-linked-cards.md) | DONE | projects, ui, portfolio |
 | FEAT-006 | [FEAT-006-active-nav-highlight-via-intersectionobserver](FEAT-006-active-nav-highlight-via-intersectionobserver.md) | DONE | nav, ux, scroll |
 | FEAT-007 | [FEAT-007-favicon-link-tags-in-page-layouts](FEAT-007-favicon-link-tags-in-page-layouts.md) | DONE | favicon, seo, layout |
+| FEAT-008 | [FEAT-008-generalize-blog-content-schema](FEAT-008-generalize-blog-content-schema.md) | DONE | blog, schema |
+| FEAT-009 | [FEAT-009-blog-syntax-highlighting-toc-and-presentation-polish](FEAT-009-blog-syntax-highlighting-toc-and-presentation-polish.md) | DONE | blog, ux |
+| FEAT-010 | [FEAT-010-blog-seo-and-accessibility-improvements](FEAT-010-blog-seo-and-accessibility-improvements.md) | DONE | blog, seo, a11y |
+| FEAT-011 | [FEAT-011-copy-link-button-and-related-posts](FEAT-011-copy-link-button-and-related-posts.md) | DONE | blog, ux |
 
-**OPEN/IN_PROGRESS:** 0  **DONE:** 7  **Total:** 7
+**OPEN/IN_PROGRESS:** 0  **DONE:** 11  **Total:** 11
