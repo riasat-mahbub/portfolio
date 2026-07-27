@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import bs23 from "../../public/bs23-logo.jpg"
 import dal from "../../public/dal-light.png"
 
-interface Education {
+interface Experience {
   role: string;
   image: ImageMetadata;
   institution: string;
@@ -12,7 +12,7 @@ interface Education {
   logo_bg: string;
 }
 
-const educations: Education[] = [
+const experiences: Experience[] = [
   {
     role: "Research Assistant",
     image: dal,
@@ -39,12 +39,11 @@ const educations: Education[] = [
         Work Experience
       </h2>
       <p class="text-lg text-[var(--white-icon)] max-w-2xl mx-auto">
-        <!-- Add your education description here -->
       </p>
     </div>
 
     <div class="grid gap-8 md:gap-12">
-      {educations.map((item) => (
+      {experiences.map((item) => (
         <div class="border border-[var(--white-icon-tr)] rounded-xl p-4 md:p-6 bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition duration-300 flex flex-col md:flex-row items-center">
           <div class={`w-16 h-16 md:w-28 md:h-28 mb-4 md:mb-0 md:mr-4 rounded-lg flex items-center justify-center ${item.logo_bg === 'white' ? 'bg-white' : item.logo_bg === 'transparent' ? 'bg-transparent' : `bg-${item.logo_bg}`}`}>
             <Image src={item.image} alt={item.institution} class="w-12 h-12 md:w-20 md:h-20" />

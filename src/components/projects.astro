@@ -143,9 +143,11 @@ const research: Project[] = [
                 <h4 class="text-xl sm:text-2xl font-semibold mb-2 leading-snug">
                   {paper.title}
                 </h4>
-                <p class="text-sm sm:text-base text-[var(--white-icon)] leading-relaxed">
-                  {paper.description}
-                </p>
+                {paper.description && (
+                  <p class="text-sm sm:text-base text-[var(--white-icon)] leading-relaxed">
+                    {paper.description}
+                  </p>
+                )}
               </div>
 
               <div
