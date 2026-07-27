@@ -1,7 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import BlogPost from '@/layouts/BlogPost.astro';
-import { readingTime, slugify } from '@/lib/utils';
+import { readingTime } from '@/lib/utils';
 import { getPublishedPosts, sortByDateDesc, getRelatedPosts } from '@/lib/blog';
 
 export async function getStaticPaths() {
