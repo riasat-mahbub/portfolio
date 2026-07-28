@@ -7,7 +7,19 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), mdx(), sitemap()],
+  integrations: [
+    tailwind(),
+    react(),
+    mdx(),
+    sitemap({
+      filter: (page) =>
+        !(
+          page.startsWith("https://riasat-mahbub.github.io/blog/tags/") &&
+          page !== "https://riasat-mahbub.github.io/blog/tags/" &&
+          page !== "https://riasat-mahbub.github.io/blog/tags"
+        ),
+    }),
+  ],
   vite: {
     resolve: {
       alias: {
