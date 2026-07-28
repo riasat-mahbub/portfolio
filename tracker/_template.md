@@ -1,7 +1,7 @@
 ---
-SCHEMA: 2
+SCHEMA: 3
 FORMAT: project-tracker
-ID: BUG-001
+ID: BUG-01J5Q3M7X8K3BXYZ1234ABCD
 TYPE: bug
 STATUS: PROPOSED
 PRIORITY: Medium
@@ -15,27 +15,20 @@ AFFECTS:
 LINKS:
 CREATED_BY:
 UPDATED_BY:
+CREATED_AT:
+UPDATED_AT:
 ---
+
 # Title
 
 ## Background
 
-
-
 ## Investigation
-
-
 
 ## Decision
 
-
-
 ## Implementation
 
-
-
 ## Verification
-
-
 
 ## Follow-up

@@ -1,9 +1,11 @@
 # Riasat Mahbub — Personal Portfolio
 
 ## Project
+
 Astro 5 static site — personal portfolio with a blog. Tailwind CSS, TypeScript, React 19 components, MDX content. Deploys to GitHub Pages via Actions on push to `master`.
 
 ## Commands
+
 ```bash
 npm run dev       # astro dev → http://localhost:4321
 npm run build     # astro check && astro build → dist/
@@ -13,6 +15,7 @@ npm start         # alias for dev
 ```
 
 ## Architecture
+
 ```
 src/
 ├── pages/           # File-based routing
@@ -40,9 +43,11 @@ src/
 │   └── social.ts                # SocialLink array (GitHub, LinkedIn, Email)
 └── styles/global.css            # CSS custom properties, dark/light themes, fonts
 ```
+
 Key config: `astro.config.mjs` — integrations (tailwind, react, mdx, sitemap), `@/` and `@components/` path aliases, static output, port 4321.
 
 ## Conventions
+
 - **Astro component structure**: frontmatter (`---`) for imports + logic, template below, optional `<style>` block at bottom. Scoped by default; use `is:global` to leak styles.
 - **Theming**: CSS custom properties (`--background`, `--white`, `--white-icon`, `--white-icon-tr`, `--sec`). Switch via `[data-theme="light"]` on `<html>`. Always reference colors as `var(--white)` etc., never hardcode hex values.
 - **Tailwind**: utility-first. Use `var(--white-icon-tr)` for subtle borders/backgrounds. Responsive breakpoints: `md:`, `lg:`.
@@ -51,7 +56,14 @@ Key config: `astro.config.mjs` — integrations (tailwind, react, mdx, sitemap),
 - **Package manager**: npm only (single lockfile — `pnpm-lock.yaml` was removed).
 - **No tests** — no test runner configured yet.
 
+## Required skill: project-tracker
+
+This project uses a file-based project knowledge graph in `tracker/`.
+
+- Before editing: search for related entries (`tracker search <topic>`)
+- After editing: update entries and rebuild (`tracker update <id> --status ... --note "..."`, `tracker rebuild && tracker validate`)
+
 ## Notes
-- `tracker/` directory contains a file-based project knowledge graph (bugs, features, decisions, epics, tasks).
+
 - Prettier available as dev dependency; no explicit config file (uses defaults). Run `npm run format` to lint.
 - `.reasonix/skills/` may exist for project-local Reasonix skills.
