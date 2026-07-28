@@ -68,7 +68,7 @@ const navItems: NavItem[] = [
       const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
       const easeProgress = 1 - Math.pow(1 - scrollProgress, 4);
 
-      const minWidth = 680; // wider for more items
+      const minWidth = 850; // wider for 7 nav items
       const maxWidth = Math.min(window.innerWidth * 0.9, 1200);
       const currentWidth = Math.max(minWidth, maxWidth - (maxWidth - minWidth) * easeProgress);
 
