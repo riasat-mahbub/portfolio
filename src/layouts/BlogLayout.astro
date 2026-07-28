@@ -29,7 +29,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/montserrat?display=swap" />
     <meta name="description" content={description || "Blog - Riasat Mahbub"} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/riasat.png" type="image/png" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description || "Blog - Riasat Mahbub"} />
