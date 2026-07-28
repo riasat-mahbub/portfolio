@@ -30,7 +30,7 @@ const { tag, posts } = Astro.props as {
 const sortedPosts = sortByDateDesc(posts);
 ---
 
-<BlogLayout title={`Posts tagged "${tag}" - Blog`} description={`Blog posts tagged with "${tag}"`} pageType="website">
+<BlogLayout title={`Posts tagged "${tag}" - Blog`} description={`Blog posts tagged with "${tag}"`} pageType="website" robots="noindex, follow">
   <BlogNav currentPath={Astro.url.pathname} />
   <main class="min-h-screen bg-[var(--background)] text-[var(--white)] pt-20">
     <div class="max-w-5xl mx-auto px-6 py-12">
