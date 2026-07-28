@@ -30,7 +30,7 @@ export function getRelatedPosts(
   maxCount: number = 3
 ): { slug: string; title: string; date: Date; sharedTags: string[] }[] {
   return allPosts
-    .filter(p => p.slug !== post.slug)
+    .filter(p => p.slug !== post.slug && !p.data.draft)
     .map(p => ({
       slug: p.slug,
       title: p.data.title,

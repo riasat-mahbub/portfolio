@@ -5,13 +5,25 @@ import BlogCard from "@/components/blog-card.astro";
 import { getPublishedPosts, sortByDateDesc, withReadingTime } from '@/lib/blog';
 import type { PostWithReadingTime } from '@/lib/blog';
 
-export async function getStaticPaths({ paginate }: { paginate: any }) {
+interface Page<T> {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+  url: { prev?: string; next?: string };
+}
+
+type PaginateFn = <T>(data: readonly T[], args?: { pageSize?: number }) => {
+  params: { page: string | undefined };
+  props: { page: Page<T> };
+}[];
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFn }) {
   const posts = await getPublishedPosts();
   const sorted = sortByDateDesc(posts);
   return paginate(withReadingTime(sorted), { pageSize: 6 });
 }
 
-const { page } = Astro.props as any;
+const { page } = Astro.props as { page: Page<PostWithReadingTime> };
 ---
 
 <BlogLayout title="Blog - Riasat Mahbub" description="My journey through coding challenges and problem-solving insights." pageType="website">
@@ -33,9 +45,9 @@ const { page } = Astro.props as any;
           </div>
 
           <!-- Pagination -->
-          {page.last > 1 && (
+          {page.lastPage > 1 && (
             <div class="flex justify-center items-center gap-4 mt-12">
-              {page.current > 1 ? (
+              {page.currentPage > 1 ? (
                 <a
                   href={page.url.prev || '#'}
                   class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
@@ -52,11 +64,11 @@ const { page } = Astro.props as any;
               )}
 
               <div class="flex items-center gap-2 text-sm">
-                {Array.from({ length: page.last }, (_, i) => i + 1).map((p) => (
+                {Array.from({ length: page.lastPage }, (_, i) => i + 1).map((p) => (
                   <a
                     href={p === 1 ? '/blog' : `/blog/${p}`}
                     class={`w-8 h-8 flex items-center justify-center rounded-full transition-colors ${
-                      p === page.current
+                      p === page.currentPage
                         ? 'bg-[var(--sec)] text-white'
                         : 'text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)]'
                     }`}
@@ -66,7 +78,7 @@ const { page } = Astro.props as any;
                 ))}
               </div>
 
-              {page.current < page.last ? (
+              {page.currentPage < page.lastPage ? (
                 <a
                   href={page.url.next || '#'}
                   class="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:text-[var(--white)] hover:bg-[var(--white-icon-tr)] transition-all duration-300 text-sm"
