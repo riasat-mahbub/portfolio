@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - FEAT-01KYNH3CBZ38TPHE6KY18RR7QT
+    - FEAT-01KYNH3CBZ38TPHE6KY18RR7QT
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:32:40.611784+00:00'
-UPDATED_AT: '2026-07-28T23:32:40.611784+00:00'
+CREATED_AT: "2026-07-28T23:32:40.611784+00:00"
+UPDATED_AT: "2026-07-28T23:32:40.611784+00:00"
 ---
 
 # FEAT-01KYNH3CBZ
@@ -29,14 +29,10 @@ Layout.astro: fixed hardcoded og:url, unified og:site_name to Riasat Mahbub, add
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

@@ -22,6 +22,7 @@ The insight was simple: every bug, feature, and cross-cutting issue should live 
 The entire v1 system was 286 lines of Python — stdlib only, no dependencies.
 
 Four commands:
+
 - `init` — scaffold the `tracker/` directory with subfolders
 - `new` — create a new entry with auto-incrementing ID
 - `close` — mark an entry closed with optional resolution and links
@@ -118,6 +119,7 @@ The MBuddy project ran this v1 tracker for over 10 months. At the time of writin
 Entries ranged from 13-line ADRs ("Legacy isolation") to 124-line detailed investigation documents ("Phase 0: Discovery"). The tracker survived multiple agents working on the project across dozens of sessions over nearly a year.
 
 The workflow was simple:
+
 1. Search entries with `grep` (there was no `search` command yet)
 2. Read relevant entries for context
 3. Make code changes

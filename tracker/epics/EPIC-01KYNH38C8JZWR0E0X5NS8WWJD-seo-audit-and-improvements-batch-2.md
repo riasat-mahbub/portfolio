@@ -10,7 +10,7 @@ EFFORT: null
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
+  - seo
 RELATIONS:
   supersedes:
     - FEAT-01KYNGQ8ZTNHTM57TEJ87RQF88
@@ -31,8 +31,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:27.240204+00:00'
-UPDATED_AT: '2026-07-28T23:31:27.240204+00:00'
+CREATED_AT: "2026-07-28T23:31:27.240204+00:00"
+UPDATED_AT: "2026-07-28T23:31:27.240204+00:00"
 ---
 
 # SEO audit and improvements — batch 2
@@ -43,14 +43,10 @@ Comprehensive SEO improvements: layout metadata consistency, 404 page, structure
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

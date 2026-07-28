@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - FEAT-01KYNH3D9RDQFR7QAYGDBZ2AVD
+    - FEAT-01KYNH3D9RDQFR7QAYGDBZ2AVD
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:34:19.211637+00:00'
-UPDATED_AT: '2026-07-28T23:34:19.211637+00:00'
+CREATED_AT: "2026-07-28T23:34:19.211637+00:00"
+UPDATED_AT: "2026-07-28T23:34:19.211637+00:00"
 ---
 
 # FEAT-01KYNH3D9R
@@ -29,14 +29,10 @@ Article OG tags: BlogLayout now renders og:article:published_time and og:article
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

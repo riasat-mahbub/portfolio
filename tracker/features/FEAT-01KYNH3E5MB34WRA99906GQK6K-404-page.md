@@ -10,8 +10,8 @@ EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
-- ux
+  - seo
+  - ux
 RELATIONS:
   part_of:
     - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
@@ -21,8 +21,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:33.172163+00:00'
-UPDATED_AT: '2026-07-28T23:31:33.172163+00:00'
+CREATED_AT: "2026-07-28T23:31:33.172163+00:00"
+UPDATED_AT: "2026-07-28T23:31:33.172163+00:00"
 ---
 
 # 404 page
@@ -33,14 +33,10 @@ Create custom 404.astro page matching site design language (dark bg, rounded car
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

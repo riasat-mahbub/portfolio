@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - FEAT-01KYNH3E5MB34WRA99906GQK6K
+    - FEAT-01KYNH3E5MB34WRA99906GQK6K
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:33:22.434868+00:00'
-UPDATED_AT: '2026-07-28T23:33:22.434868+00:00'
+CREATED_AT: "2026-07-28T23:33:22.434868+00:00"
+UPDATED_AT: "2026-07-28T23:33:22.434868+00:00"
 ---
 
 # FEAT-01KYNH3E5M
@@ -29,14 +29,10 @@ Created src/pages/404.astro: centered card layout matching site design (dark bg,
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

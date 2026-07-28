@@ -137,17 +137,17 @@ V1_LINK_PATTERN = r"(?P<key>[\w-]+)=(?P<value>[\w-]+)"
 
 A `LINK_MAP` classifies each key:
 
-| v1 key | v2 destination |
-|--------|---------------|
-| `fix-commit` | `LINKS.commits` |
+| v1 key            | v2 destination                       |
+| ----------------- | ------------------------------------ |
+| `fix-commit`      | `LINKS.commits`                      |
 | `related-feature` | `RELATIONS.related` (prefix → FEAT-) |
-| `related-issue` | `RELATIONS.related` (prefix → TASK-) |
-| `related-adr` | `RELATIONS.related` (prefix → ADR-) |
-| `parent` | `RELATIONS.parent` |
-| `depends-on` | `RELATIONS.depends_on` |
-| `blocks` | `RELATIONS.blocks` |
-| `epic` | `RELATIONS.epic` |
-| (unknown) | `LINKS.raw` |
+| `related-issue`   | `RELATIONS.related` (prefix → TASK-) |
+| `related-adr`     | `RELATIONS.related` (prefix → ADR-)  |
+| `parent`          | `RELATIONS.parent`                   |
+| `depends-on`      | `RELATIONS.depends_on`               |
+| `blocks`          | `RELATIONS.blocks`                   |
+| `epic`            | `RELATIONS.epic`                     |
+| (unknown)         | `LINKS.raw`                          |
 
 ### 3. File relocation
 
@@ -199,7 +199,8 @@ commands:
     read_only: true
   rebuild:
     read_only: false
-    generates: [tracker/README.md, index.md files, graph.json, COMPUTED backlinks]
+    generates:
+      [tracker/README.md, index.md files, graph.json, COMPUTED backlinks]
   validate:
     read_only: true
 ```
@@ -225,6 +226,7 @@ This is the pattern that makes the skill sticky. The init workflow writes tracke
 ## Required skill: project-tracker
 
 This project uses a file-based project knowledge graph in tracker/.
+
 - Before editing: search for related entries (`tracker search <topic>`)
 - After editing: rebuild and validate (`tracker rebuild && tracker validate`)
 ```
@@ -235,11 +237,11 @@ Reasonix auto-injects `AGENTS.md` into every session's system prompt under a `# 
 
 The tool tracks itself. Its `tracker/` directory contains 13 entries:
 
-| Type | Count | Examples |
-|------|-------|----------|
-| ADR | 5 | Package structure, YAML+Markdown, graph as dicts, pure Python validation, pip install |
-| FEAT | 7 | 9 CLI commands, graph.json, dashboard builder, v1→v2 migration, search, doctor, Tracker class API |
-| BUG | 1 | Package discovery on editable install |
+| Type | Count | Examples                                                                                          |
+| ---- | ----- | ------------------------------------------------------------------------------------------------- |
+| ADR  | 5     | Package structure, YAML+Markdown, graph as dicts, pure Python validation, pip install             |
+| FEAT | 7     | 9 CLI commands, graph.json, dashboard builder, v1→v2 migration, search, doctor, Tracker class API |
+| BUG  | 1     | Package discovery on editable install                                                             |
 
 Every ADR documents a real architectural decision made during development. Every FEAT corresponds to a shipped capability. The BUG records a real issue (the `assets/` directory was detected as a top-level package by setuptools, breaking `pip install -e`).
 
@@ -249,19 +251,19 @@ The dogfooding even uncovered a design issue: the Python package was named `trac
 
 ## The Full Evolution
 
-| | v1 | v2 |
-|---|---|---|
-| Lines of code | 286 | ~1,500 |
-| Language | stdlib Python | Python + pyyaml |
-| Installation | `python scripts/tracker.py` | `pip install -e .` + `tracker` CLI |
-| Entry types | 3 (bug, feature, issue) | 6 (+ adr, task, epic, doc) |
-| Relations | Flat `LINKS` string | Structured `RELATIONS` dict with typed edges |
-| Backlinks | None | Computed via INVERSE_MAP |
-| graph.json | None | Full adjacency file |
-| Search | `grep` | Full-text with frontmatter weighting |
-| Validation | None | Schema, enum, cross-ref, duplicate checks |
-| Schema versioning | None | SCHEMA field, migrator |
-| Agent integration | Manual | Skill layer + AGENTS.md auto-injection |
-| Self-tracking | No | 13 entries in its own tracker/ |
+|                   | v1                          | v2                                           |
+| ----------------- | --------------------------- | -------------------------------------------- |
+| Lines of code     | 286                         | ~1,500                                       |
+| Language          | stdlib Python               | Python + pyyaml                              |
+| Installation      | `python scripts/tracker.py` | `pip install -e .` + `tracker` CLI           |
+| Entry types       | 3 (bug, feature, issue)     | 6 (+ adr, task, epic, doc)                   |
+| Relations         | Flat `LINKS` string         | Structured `RELATIONS` dict with typed edges |
+| Backlinks         | None                        | Computed via INVERSE_MAP                     |
+| graph.json        | None                        | Full adjacency file                          |
+| Search            | `grep`                      | Full-text with frontmatter weighting         |
+| Validation        | None                        | Schema, enum, cross-ref, duplicate checks    |
+| Schema versioning | None                        | SCHEMA field, migrator                       |
+| Agent integration | Manual                      | Skill layer + AGENTS.md auto-injection       |
+| Self-tracking     | No                          | 13 entries in its own tracker/               |
 
 The project is MIT-licensed at [github.com/riasat-mahbub/project-tracker-graph](https://github.com/riasat-mahbub/project-tracker-graph). The skill layer is at [github.com/riasat-mahbub/project-tracker-skill](https://github.com/riasat-mahbub/project-tracker-skill).

@@ -10,9 +10,9 @@ EFFORT: M
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
-- performance
-- fonts
+  - seo
+  - performance
+  - fonts
 RELATIONS:
   part_of:
     - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
@@ -25,8 +25,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:35.842043+00:00'
-UPDATED_AT: '2026-07-28T23:31:35.842043+00:00'
+CREATED_AT: "2026-07-28T23:31:35.842043+00:00"
+UPDATED_AT: "2026-07-28T23:31:35.842043+00:00"
 ---
 
 # Self-host Montserrat font
@@ -37,14 +37,10 @@ Download Montserrat WOFF2 (weights 400,500,600,700 + italics) from Google Fonts,
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

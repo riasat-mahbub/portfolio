@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - TASK-01KYNH3GS1HR9QK2HMK7KZ4ECX
+    - TASK-01KYNH3GS1HR9QK2HMK7KZ4ECX
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:35:52.872644+00:00'
-UPDATED_AT: '2026-07-28T23:35:52.872644+00:00'
+CREATED_AT: "2026-07-28T23:35:52.872644+00:00"
+UPDATED_AT: "2026-07-28T23:35:52.872644+00:00"
 ---
 
 # TASK-01KYNH3GS1
@@ -29,14 +29,10 @@ Downloaded Montserrat variable WOFF2 fonts from Google Fonts (latin subset only:
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

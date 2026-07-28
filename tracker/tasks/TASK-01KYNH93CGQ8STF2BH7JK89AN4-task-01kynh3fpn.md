@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - TASK-01KYNH3FPNSQMFBND0SBZN7PCV
+    - TASK-01KYNH3FPNSQMFBND0SBZN7PCV
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:34:38.736446+00:00'
-UPDATED_AT: '2026-07-28T23:34:38.736446+00:00'
+CREATED_AT: "2026-07-28T23:34:38.736446+00:00"
+UPDATED_AT: "2026-07-28T23:34:38.736446+00:00"
 ---
 
 # TASK-01KYNH3FPN
@@ -29,14 +29,10 @@ Added per-item author (email+name), channel copyright, atom:link self-reference,
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

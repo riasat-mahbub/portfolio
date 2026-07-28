@@ -10,8 +10,8 @@ EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
-- structured-data
+  - seo
+  - structured-data
 RELATIONS:
   part_of:
     - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
@@ -22,8 +22,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:34.057015+00:00'
-UPDATED_AT: '2026-07-28T23:31:34.057015+00:00'
+CREATED_AT: "2026-07-28T23:31:34.057015+00:00"
+UPDATED_AT: "2026-07-28T23:31:34.057015+00:00"
 ---
 
 # Structured data — Person and BreadcrumbList JSON-LD
@@ -34,14 +34,10 @@ Add Person schema (sameAs, jobTitle) to homepage. Add BreadcrumbList and enhance
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

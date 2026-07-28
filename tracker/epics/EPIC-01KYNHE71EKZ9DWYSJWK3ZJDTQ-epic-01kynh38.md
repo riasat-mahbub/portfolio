@@ -12,13 +12,13 @@ CONFIDENCE: Medium
 TAGS: null
 RELATIONS:
   supersedes:
-  - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
+    - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
 AFFECTS: null
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:37:26.318710+00:00'
-UPDATED_AT: '2026-07-28T23:37:26.318710+00:00'
+CREATED_AT: "2026-07-28T23:37:26.318710+00:00"
+UPDATED_AT: "2026-07-28T23:37:26.318710+00:00"
 ---
 
 # EPIC-01KYNH38
@@ -29,14 +29,10 @@ All sub-entries complete: layout metadata, 404 page, structured data, robots dir
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

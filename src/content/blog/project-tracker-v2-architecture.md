@@ -15,14 +15,14 @@ v1 had a flat format: `001`, `TYPE`, `NAME`, `STATUS`, `TAGS`, and a string `LIN
 
 ### Six entry types
 
-| Type | Folder | Prefix | Purpose |
-|------|--------|--------|---------|
-| `bug` | `bugs/` | BUG | Defects and issues |
-| `feature` | `features/` | FEAT | Capabilities and enhancements |
-| `adr` | `decisions/` | ADR | Architectural Decision Records |
-| `task` | `tasks/` | TASK | Chores and operational work |
-| `epic` | `epics/` | EPIC | Group of related entries |
-| `doc` | `docs/` | DOC | Documentation references |
+| Type      | Folder       | Prefix | Purpose                        |
+| --------- | ------------ | ------ | ------------------------------ |
+| `bug`     | `bugs/`      | BUG    | Defects and issues             |
+| `feature` | `features/`  | FEAT   | Capabilities and enhancements  |
+| `adr`     | `decisions/` | ADR    | Architectural Decision Records |
+| `task`    | `tasks/`     | TASK   | Chores and operational work    |
+| `epic`    | `epics/`     | EPIC   | Group of related entries       |
+| `doc`     | `docs/`      | DOC    | Documentation references       |
 
 ### The frontmatter fields
 
@@ -106,7 +106,7 @@ AFFECTS:
 ```yaml
 LINKS:
   commits: ["abc123"]
-  raw: {"pr": "https://github.com/.../pull/42"}
+  raw: { "pr": "https://github.com/.../pull/42" }
 ```
 
 ### Full enum validation
@@ -195,14 +195,14 @@ Commands are lazy-imported at call time — only the needed module is loaded.
 
 Six services, each independently testable:
 
-| Service | Responsibility |
-|---------|---------------|
-| `GraphBuilder` | Builds `graph.json` with computed backlinks |
+| Service            | Responsibility                                                   |
+| ------------------ | ---------------------------------------------------------------- |
+| `GraphBuilder`     | Builds `graph.json` with computed backlinks                      |
 | `DashboardBuilder` | Writes `README.md`, `index.md` files, injects COMPUTED backlinks |
-| `TrackerValidator` | Checks schema, enums, duplicate IDs, broken cross-refs |
-| `TrackerMigrator` | Upgrades v1 entries to Schema 2 |
-| `Searcher` | Full-text search with frontmatter-weighted scoring |
-| `Doctor` | Validate + rebuild + auto-fix in one command |
+| `TrackerValidator` | Checks schema, enums, duplicate IDs, broken cross-refs           |
+| `TrackerMigrator`  | Upgrades v1 entries to Schema 2                                  |
+| `Searcher`         | Full-text search with frontmatter-weighted scoring               |
+| `Doctor`           | Validate + rebuild + auto-fix in one command                     |
 
 ### Models layer (schema constants)
 

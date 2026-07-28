@@ -10,8 +10,8 @@ EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
-- meta
+  - seo
+  - meta
 RELATIONS:
   part_of:
     - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
@@ -22,8 +22,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:31.327538+00:00'
-UPDATED_AT: '2026-07-28T23:31:31.327538+00:00'
+CREATED_AT: "2026-07-28T23:31:31.327538+00:00"
+UPDATED_AT: "2026-07-28T23:31:31.327538+00:00"
 ---
 
 # Layout metadata consistency
@@ -34,14 +34,10 @@ Unify og:site_name to Riasat Mahbub, add og:locale=en_CA, fix hardcoded og:url t
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

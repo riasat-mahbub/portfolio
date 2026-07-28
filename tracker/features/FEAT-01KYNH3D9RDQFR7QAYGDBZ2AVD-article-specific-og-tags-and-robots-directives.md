@@ -10,8 +10,8 @@ EFFORT: S
 OWNER: null
 CONFIDENCE: Medium
 TAGS:
-- seo
-- blog
+  - seo
+  - blog
 RELATIONS:
   part_of:
     - EPIC-01KYNH38C8JZWR0E0X5NS8WWJD
@@ -24,8 +24,8 @@ AFFECTS:
 LINKS: null
 CREATED_BY: null
 UPDATED_BY: null
-CREATED_AT: '2026-07-28T23:31:32.280527+00:00'
-UPDATED_AT: '2026-07-28T23:31:32.280527+00:00'
+CREATED_AT: "2026-07-28T23:31:32.280527+00:00"
+UPDATED_AT: "2026-07-28T23:31:32.280527+00:00"
 ---
 
 # Article-specific OG tags and robots directives
@@ -36,14 +36,10 @@ Add og:article:published_time, og:article:tag to blog posts. Add noindex to tag 
 
 ## Investigation
 
-
 ## Decision
-
 
 ## Implementation
 
-
 ## Verification
-
 
 ## Follow-up

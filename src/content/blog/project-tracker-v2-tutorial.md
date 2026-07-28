@@ -186,6 +186,7 @@ When you run `tracker init`, the skill now also writes tracker-loading instructi
 ## Required skill: project-tracker
 
 This project uses a file-based project knowledge graph in tracker/.
+
 - Before editing: search for related entries (`tracker search <topic>`)
 - After editing: rebuild and validate (`tracker rebuild && tracker validate`)
 ```
@@ -219,7 +220,9 @@ Instead of scanning 57+ individual entry files, the agent reads one file:
 ```json
 {
   "BUG-001": {
-    "type": "bug", "status": "IN_PROGRESS", "priority": "High",
+    "type": "bug",
+    "status": "IN_PROGRESS",
+    "priority": "High",
     "relations": { "depends_on": ["FEAT-018"], "epic": ["EPIC-001"] },
     "affects": { "files": ["backend/api/auth.py"] },
     "referenced_by": ["BUG-003"]
