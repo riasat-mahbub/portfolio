@@ -44,10 +44,15 @@ export function getRelatedPosts(
 
 export function getAllTags(posts: BlogPost[]): Map<string, number> {
   const tagMap = new Map<string, number>();
+  const tagDisplay = new Map<string, string>();
   posts.forEach(post => {
     post.data.tags.forEach(tag => {
       const key = tag.toLowerCase();
-      tagMap.set(key, (tagMap.get(key) || 0) + 1);
+      if (!tagDisplay.has(key)) {
+        tagDisplay.set(key, tag);
+      }
+      const displayName = tagDisplay.get(key)!;
+      tagMap.set(displayName, (tagMap.get(displayName) || 0) + 1);
     });
   });
   return tagMap;
