@@ -22,8 +22,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       })();
     </script>
     <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/montserrat?display=swap" />
+    <link rel="preload" href="/fonts/montserrat-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/montserrat-italic.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="description" content="Riasat Mahbub - Software Developer specializing in web development and artificial intelligence" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -58,4 +58,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 <style is:global>
   @import '../styles/global.css';
+  @import '../styles/fonts.css';
 </style>
