@@ -18,7 +18,7 @@ const { title, description, tags, publishDate, updatedDate, coverImage, readingT
 const toc = (headings || []).filter(h => h.depth >= 2 && h.depth <= 3);
 ---
 
-<BlogLayout title={`${title} - Blog`} description={description} image={coverImage} pageType="article">
+<BlogLayout title={`${title} - Blog`} description={description} image={coverImage} pageType="article" publishDate={publishDate} tags={tags}>
   <BlogNav currentPath={Astro.url.pathname} />
   <script type="application/ld+json" is:inline set:html={JSON.stringify({
     '@context': 'https://schema.org',
