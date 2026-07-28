@@ -2,24 +2,29 @@
 interface SkillCategory {
   name: string;
   skills: string[];
+  accent: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
     name: "Languages",
     skills: ["TypeScript", "JavaScript", "Python", "C++", "PHP", "Dart", "SQL"],
+    accent: "#6366f1",
   },
   {
     name: "Frontend",
     skills: ["React", "Angular", "Astro", "Tailwind CSS", "Ionic", "HTML/CSS"],
+    accent: "#06b6d4",
   },
   {
     name: "Backend",
     skills: ["Node.js", "Laravel", "REST APIs", "Firebase"],
+    accent: "#10b981",
   },
   {
     name: "Tools & Platforms",
     skills: ["Git", "Docker", "Linux", "GitHub Actions", "CI/CD", "Vite", "Netlify"],
+    accent: "#f59e0b",
   },
 ];
 ---
@@ -32,16 +37,14 @@ const skillCategories: SkillCategory[] = [
     <div class="flex flex-col gap-10">
       {skillCategories.map((category) => (
         <div class="bg-[#1414149c] rounded-2xl p-6 md:p-8 border border-[#ffffff10]">
-          <h4 class="font-medium text-[var(--white-icon)] mb-4 uppercase tracking-wider text-sm">
+          <h4 class="font-medium mb-4 uppercase tracking-wider text-sm" style={`color: ${category.accent}`}>
             {category.name}
           </h4>
           <div class="flex flex-wrap gap-3">
             {category.skills.map((skill) => (
               <span
-                class="px-4 py-2 bg-[#ffffff08] text-[var(--white-icon)] 
-                       border border-[var(--white-icon-tr)] rounded-full text-sm
-                       hover:bg-[var(--white-icon-tr)] hover:text-white 
-                       transition-all duration-300 hover:scale-105"
+                class="px-4 py-2 rounded-full text-sm transition-all duration-300 hover:scale-105"
+                style={`background:${category.accent}1A; color:${category.accent}; border:1px solid ${category.accent}33`}
               >
                 {skill}
               </span>
