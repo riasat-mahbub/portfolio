@@ -123,6 +123,82 @@
     "affects": {},
     "referenced_by": []
   },
+  "TASK-009": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {
+      "depends_on": [],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "src/components/skills.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "TASK-010": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "High",
+    "relations": {
+      "depends_on": [],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "public/apple-touch-icon.png",
+        "public/favicon-96x96.png",
+        "public/favicon.ico",
+        "public/favicon.svg",
+        "public/site.webmanifest",
+        "public/web-app-manifest-192x192.png",
+        "public/web-app-manifest-512x512.png",
+        "src/layouts/Layout.astro",
+        "src/layouts/BlogLayout.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "TASK-011": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {
+      "depends_on": [],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "src/components/home.astro",
+        "src/components/experience.astro",
+        "src/components/education.astro",
+        "src/components/projects.astro",
+        "src/components/blog-section.astro",
+        "src/components/connect.astro"
+      ]
+    },
+    "referenced_by": []
+  },
+  "TASK-012": {
+    "type": "task",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {
+      "depends_on": [
+        "BUG-009"
+      ],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "src/pages/blog/[...page].astro",
+        "src/lib/blog.ts"
+      ]
+    },
+    "referenced_by": []
+  },
   "FEAT-001": {
     "type": "feature",
     "status": "DONE",
@@ -387,6 +463,38 @@
     "priority": "High",
     "relations": {},
     "affects": {},
+    "referenced_by": []
+  },
+  "BUG-009": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": "Medium",
+    "relations": {
+      "depends_on": [],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "src/lib/blog.ts"
+      ]
+    },
+    "referenced_by": [
+      "TASK-012"
+    ]
+  },
+  "BUG-010": {
+    "type": "bug",
+    "status": "DONE",
+    "priority": "Low",
+    "relations": {
+      "depends_on": [],
+      "epic": []
+    },
+    "affects": {
+      "files": [
+        "src/components/nav.astro"
+      ]
+    },
     "referenced_by": []
   }
 }

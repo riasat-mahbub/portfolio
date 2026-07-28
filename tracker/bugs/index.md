@@ -10,5 +10,7 @@
 | BUG-006 | [BUG-006-mobile-nav-icons-render-as-literal-svg-text](BUG-006-mobile-nav-icons-render-as-literal-svg-text.md) [High] | DONE |  |
 | BUG-007 | [BUG-007-projet-tracker-graph-typo-creates-404-links](BUG-007-projet-tracker-graph-typo-creates-404-links.md) [High] | DONE |  |
 | BUG-008 | [BUG-008-missing-favicon-ico-404-on-every-page-load](BUG-008-missing-favicon-ico-404-on-every-page-load.md) [High] | DONE |  |
+| BUG-009 | [BUG-009-tag-display-names-lost-capitalization-after-blog-ts-refactor](BUG-009-tag-display-names-lost-capitalization-after-blog-ts-refactor.md) [Medium] | DONE | blog |
+| BUG-010 | [BUG-010-navbar-minwidth-too-narrow-items-overflow-on-scroll-shrink](BUG-010-navbar-minwidth-too-narrow-items-overflow-on-scroll-shrink.md) [Low] | DONE | nav, ui |
 
-**OPEN/IN_PROGRESS:** 0  **DONE:** 8  **Total:** 8
+**OPEN/IN_PROGRESS:** 0  **DONE:** 10  **Total:** 10

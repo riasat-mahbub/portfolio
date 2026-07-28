@@ -10,5 +10,9 @@
 | TASK-006 | [TASK-006-og-image-optimization-and-home-astro-image-pipeline](TASK-006-og-image-optimization-and-home-astro-image-pipeline.md) [Medium] | DONE |  |
 | TASK-007 | [TASK-007-eliminate-theme-fouc-with-blocking-head-script](TASK-007-eliminate-theme-fouc-with-blocking-head-script.md) [Medium] | DONE |  |
 | TASK-008 | [TASK-008-clean-up-code-smells-logo-bg-border-dupe-flex-0-conflicting-text-classes](TASK-008-clean-up-code-smells-logo-bg-border-dupe-flex-0-conflicting-text-classes.md) [Low] | DONE |  |
+| TASK-009 | [TASK-009-add-brand-colors-to-skills-section](TASK-009-add-brand-colors-to-skills-section.md) [Medium] | DONE | skills, ui |
+| TASK-010 | [TASK-010-replace-favicon-with-properly-sized-multi-format-assets](TASK-010-replace-favicon-with-properly-sized-multi-format-assets.md) [High] | DONE | seo, meta |
+| TASK-011 | [TASK-011-standardize-homepage-section-structure](TASK-011-standardize-homepage-section-structure.md) [Medium] | DONE | structure, a11y |
+| TASK-012 | [TASK-012-type-page-astro-properly-and-add-defensive-draft-filter-to-getrelatedposts](TASK-012-type-page-astro-properly-and-add-defensive-draft-filter-to-getrelatedposts.md) [Medium] | DONE | types, blog |
 
-**OPEN/IN_PROGRESS:** 0  **DONE:** 8  **Total:** 8
+**OPEN/IN_PROGRESS:** 0  **DONE:** 12  **Total:** 12
