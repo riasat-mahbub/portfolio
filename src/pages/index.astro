@@ -11,6 +11,17 @@ import Connect from "@/components/connect.astro";
 ---
 
 <Layout title="Riasat Mahbub">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Riasat Mahbub',
+    url: new URL('/', Astro.site).href,
+    sameAs: [
+      'https://github.com/riasat-mahbub',
+      'https://www.linkedin.com/in/riasat-m-70682b115/',
+    ],
+    jobTitle: 'Software Developer',
+  })} />
   <Nav />
   <Home />
   <Projects />
