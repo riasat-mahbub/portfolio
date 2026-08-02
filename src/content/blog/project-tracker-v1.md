@@ -13,7 +13,7 @@ The result is predictable: agents repeat mistakes, miss critical context, genera
 
 Project teams typically solve this with a PLAN.md a hand-maintained document at the root of the repo. But PLAN.md rots. It gets updated once and forgotten. It's a single file that becomes a dumping ground. There's no structure, no search, no way to answer "what depends on this feature?".  There is also a lot of long term memory solutions that leverage vector databases to store and query project information. But these solutions are often overload the context with unnecessary search results and sometimes suffer from memory pollution when too many changes are made at once.
 
-This solution needs to be specific enough to give necessary context about any query while also avoiding unnecessary information that might overload the context. We needed something better: a persistent, structured, file-based project knowledge graph that lives in the repo itself, that agents can walk without a database or API, and that doesn't rot because it's part of the development workflow.
+This solution needs to be specific enough to give necessary context about any query while also avoiding unnecessary information that might overload the context. We needed something better: a persistent, structured, file-based project knowledge that lives in the repo itself, that agents can walk without a database or API, and that doesn't rot because it's part of the development workflow.
 
 ## Starting from scratch
 
@@ -444,3 +444,4 @@ Although this is a solid system with a simple execution pattern, it has a very o
 While these limitations are not fatal, they present real problems we need to solve.
 
 ## What's Next
+Although a good first draft, this project leaves a lot to be desired. For version 2 of this project we can start with addressing the obvious limitations such as: more project types, typed relations, robust search and support for issue relations.
