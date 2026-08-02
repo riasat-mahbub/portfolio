@@ -28,7 +28,7 @@ This categorization is partially based on existing github issues framework that 
 
 ## Entry Format
 
-Every entry is a single `.md` file. The frontmatter is the source of truth as all structured metadata lives there. The body is free-form Markdown for investigation notes, decisions, and descriptions. We can divide our entry into two separate parts the **head** and the **body**. The head contains quick metadata information about the project, while the body contains more descriptive information.  They are separated from each other with the `---` string acting as a separator.
+Every entry is a single `.md` file. The head is the source of truth as all structured metadata lives there. The body is free-form Markdown for investigation notes, decisions, and descriptions. We can divide our entry into two separate parts the **head** and the **body**. The head contains quick metadata information about the project, while the body contains more descriptive information.  They are separated from each other with the `---` string acting as a separator.
 
 
 ### The Head: Structured YAML metadata
@@ -103,7 +103,7 @@ We can package all these commands in a simple python script that takes these com
 
 ### Setup and Configuration
 
-We start with standard Python imports and global constants. `FIELD_ORDER` defines the standard key layout to ensure predictable frontmatter formatting across every file.
+We start with standard Python imports and global constants. `FIELD_ORDER` defines the standard key layout to ensure predictable head formatting across every file.
 
 ```
 #!/usr/bin/env python3
@@ -123,7 +123,7 @@ For features: what it does, why it matters.
 For issues: context, impact, resolution if applicable.
 """
 ```
-### Parsing and Formatting Frontmatter
+### Parsing and Formatting the `head`
 To keep dependencies at zero, we handle text parsing using native string operations and standard library utilities rather than external YAML libraries.
 
 `slugify`: Converts human titles into safe, filesystem-friendly filenames (e.g., "Autosave race condition!" $\rightarrow$ "autosave-race-condition")
@@ -149,11 +149,11 @@ def format_frontmatter(fields: dict) -> str:
 
 
 def parse_entry(path: Path) -> dict:
-    """Parse frontmatter + body from an entry file."""
+    """Parse head + body from an entry file."""
     text = path.read_text(encoding="utf-8")
     parts = text.split("---", 2)
     if len(parts) < 3:
-        raise ValueError(f"{path} is missing '---' frontmatter delimiters")
+        raise ValueError(f"{path} is missing '---' head delimiters")
     front, body = parts[1], parts[2]
     fields = {}
     for line in front.strip("\n").splitlines():
@@ -216,7 +216,7 @@ The CLI handles the initial folder scaffolding and entry creation using simple f
 
 `cmd_init`: Scaffolds the tracker/ directory along with bugs/, features/, and issues/ subdirectories.
 
-`cmd_new`: Generates a new Markdown entry file with pre-populated frontmatter and description templates, then automatically updates the search indexes.
+`cmd_new`: Generates a new Markdown entry file with pre-populated head and description templates, then automatically updates the search indexes.
 
 ```python
 def cmd_init(args):
@@ -352,7 +352,7 @@ def rebuild_indexes(root: Path):
         "cross-cutting issues. Replaces git log archaeology and a hand-maintained "
         "PLAN.md. Every entry lives in its own file under `bugs/`, `features/`, or "
         "`issues/`; the tables below and in each `index.md` are generated from "
-        "those files' frontmatter by `scripts/tracker.py rebuild` — don't hand-edit them.\n\n"
+        "those files' head by `scripts/tracker.py rebuild` — don't hand-edit them.\n\n"
         "| Folder | OPEN | CLOSED | Total |\n"
         "|--------|------|--------|-------|\n"
         + "\n".join(dash_rows) + "\n"
