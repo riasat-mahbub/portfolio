@@ -18,6 +18,9 @@ export async function GET(context: { site: URL }) {
       link: `/blog/${post.slug}/`,
       author: "riasat1998@gmail.com (Riasat Mahbub)",
     })),
+    xmlns: {
+      atom: "http://www.w3.org/2005/Atom",
+    },
     customData: [
       `<language>en-ca</language>`,
       `<atom:link href="${feedUrl}" rel="self" type="application/rss+xml"/>`,
