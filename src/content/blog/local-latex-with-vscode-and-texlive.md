@@ -230,7 +230,7 @@ After swapping the recipe, clean up any stale build state. `Ctrl+Shift+P` → `L
 
 Alternately, you can use the sidebar of LaTeX workshop extension.
 
-![screenshot of the latex Tab with "LaTeX Workshop: Clean up auxiliary files" highlighted.](public/images/blog/local-latex-with-vscode-and-texlive/latex_tab copy.png)
+![screenshot of the latex Tab with "LaTeX Workshop: Clean up auxiliary files" highlighted.](public/images/blog/local-latex-with-vscode-and-texlive/latex_tab_copy.png)
 </details>
 
 ## 8. Notes
