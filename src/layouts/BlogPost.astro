@@ -260,7 +260,14 @@ const postUrl = new URL(Astro.url.pathname, Astro.site).href;
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
     font-weight: 600;
-    transition: color 0.2s ease-in-out;
+  }
+
+  .prose img {
+    margin: 1.75rem 0;
+    border-radius: 0.5rem;
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 
   .prose a:hover {
