@@ -253,6 +253,66 @@ const postUrl = new URL(Astro.url.pathname, Astro.site).href;
     color: var(--white);
     font-weight: 600;
   }
+
+  .prose a {
+    color: #ec4899;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .prose a:hover {
+    color: #f472b6;
+  }
+
+  [data-theme="light"] .prose a {
+    color: #be185d;
+  }
+
+  [data-theme="light"] .prose a:hover {
+    color: #9d174d;
+  }
+  .prose details {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.5rem;
+    background-color: var(--white-icon-tr);
+  }
+
+  .prose details[open] {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--white);
+    padding: 0.25rem 0;
+    list-style: none;
+  }
+
+  .prose summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .prose summary::before {
+    content: '\25B6';
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 0.7em;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .prose details[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  .prose details > *:not(summary) {
+    margin-top: 0.75rem;
+  }
   
   .prose blockquote {
     border-left: 4px solid var(--white-icon-tr);
