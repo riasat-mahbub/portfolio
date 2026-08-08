@@ -13,12 +13,11 @@ This post is more explicit at the OS-specific install steps, and the Windows pan
 
 ## 1. Install TeX Live
 
-Pick your OS:
+TexLive is the comprehensive TeX package working with TeX files. I am going with the full install, which takes around 6–8 GB of space and can take 30–60+ minutes over network mirrors to fully install. You can go over the [TeX Live quick install guide](https://www.tug.org/texlive/quickinstall.html) for more details. 
 
 <details open>
 <summary>Linux and Unix</summary>
 
-The [TeX Live quick install guide](https://www.tug.org/texlive/quickinstall.html) is the canonical reference. The short version:
 
 1. Download the installer:
 
@@ -267,7 +266,7 @@ Alternately, you can use the sidebar of LaTeX workshop extension.
 
 If your document uses a font outside the standard `texlive-fonts-recommended` set, you need the matching `texlive-fonts-extra` package or the font installed at the OS level. Specific cases:
 
-a. `fontspec` with system fonts (Inter, Roboto, etc.) needs the font installed at the OS level AND `\setmainfont{Inter}` declared in the preamble. OS-only install is not enough.
+a. `fontspec` with system fonts (Inter, Roboto, etc.) needs the font installed at the OS level AND `\setmainfont{Inter}` declared in the preamble. OS-only install is not enough. Because `pdflatex` cannot natively use system OTF/TTF fonts via `fontspec` (it requires `xelatex` or `lualatex`), it requires swapping the engine recipe.
 
 b. CJK fonts (Noto Sans CJK) need the `texlive-lang-chinese` or `texlive-lang-japanese` collections on Linux. They are not pulled in by the default install.
 
