@@ -1,6 +1,6 @@
 ---
 title: "Writing LaTeX Locally with VSCode and TeX Live"
-description: "Overleaf's new compile-time limits make local LaTeX a real option again. A more explicit walkthrough of the VSCode + TeX Live setup, including the Windows-specific fixes that took me too long to find the first time."
+description: "Overleaf's new compile-time limits make working with slightly large papers more hassle than worth. This walkthrough of the VSCode + TeX Live setup, including some troubleshooting tips will make switching from overleaf easier "
 tags: ["Overleaf", "VSCode", "Linux", "Windows", "LaTeX", "Tooling"]
 publishDate: 2026-08-08
 ---
@@ -68,68 +68,96 @@ Both `pdflatex` and `biber` should resolve to a path inside `/usr/local/texlive/
 <details>
 <summary>Mac</summary>
 
-Skip the Unix path. [MacTeX](https://www.tug.org/mactex/mactex-download.html) handles the install cleanly.
+Although the steps of Linux\UNIX work perfectly for MacOS systems, I recommend using [MacTeX](https://www.tug.org/mactex/mactex-download.html) instead of regular TexLive. It comes with its own installer and other helpful packages. It's basically a hassle-free version of TexLive for MacOs devices, which you can just ***install and forget***.
 
 </details>
 
 <details>
 <summary>Windows</summary>
 
-Windows has its [own installer](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe). Run it. The PATH is set automatically, so no shell config edits.
+Unlike MacOS and linux, Windows has its own [TexLive installer](https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe). This is a little easier than the UNIX installation method, since PATH is set automatically, so you don't need to make shell config edits.
+
+For windows there is another option called [MiKTex](https://miktex.org/download), if you are looking to save some space. MiKTex was made for Windows systems from the ground up and features a rolling release. One caveat with using MiKTex with external editors is that it often blocks compilation for missing packages without user intervention. You can easily fix that by going to *MiKTeX Console --> Settings --> set* **"You can configure MiKTeX so that missing packages are installed automatically"** to **"Always"** or **"Yes"**. I don't recommend the Linux\MacOS implementations since it can often conflict with the Linux filesytem or package managers. Couple that with a much smaller community, it becomes Herculean task to maintain properly.
 
 </details>
 
-## 2. Install VSCode
+## 2. Setting up Tex
 
-The [official installer](https://code.visualstudio.com/) works on every OS. On Linux, `pacman -S code` (Arch) or `apt install code` (Ubuntu/Debian) both work.
+Now that you are done installing TexLive, you now start your tex project. If you already have an ongoing paper on Overleaf, you can just download the tex source on there. Start by going to `Menu` → `Download` → `Download as source .zip`. 
 
-## 3. Install the LaTeX Workshop extension
+![Screenshot of overleaf source download button](public/images/blog/local-latex-with-vscode-and-texlive/overleaf.png)
+
+Extract the zip locally. On Arch, `bsdtar xvf filename.zip` works out of the box. On other systems, `unzip` or a file manager both work.
+
+If you are instead looking to start a new project, you can get templates directly from [Overleaf Templates](https://www.overleaf.com/latex/templates). They have default templates for most types documents. If your journal/conference paper has a particular format, they usually have the required templates posted on the website.
+
+
+## 3. Setting up VsCode
+
+### VsCode install
+
+If you don't have VsCode already, you can use the [official installer](https://code.visualstudio.com/), which works on every OS. On Linux, I like to use **Code-OSS**, which is a fork of VsCode without Microsoft's telemetry installed. Use the command `pacman -S code` (Arch) or `apt install code` (Ubuntu/Debian) to install Code-OSS.
+
+### Install the LaTeX Workshop extension
 
 It is the de facto VSCode LaTeX extension. Search for it in the extension panel, or use [this link](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) if the search misses.
 
-## 4. Pull your Overleaf source
+### Open TeX folder in VSCode
 
-In Overleaf, go to `Menu` → `Download` → `Download as source .zip`. Extract the zip locally. On Arch, `bsdtar xvf filename.zip` works out of the box. On other systems, `unzip` or a file manager both work.
+On Vscode, go to `File` → `Open Folder` or `Crtl+K+O` to pick the latex directory. The build expects the main `.tex` file at the root of the folder, so make sure that's the case.
 
-## 5. Open the folder in VSCode
-
-`File` → `Open Folder`, then pick the directory you just extracted. The build expects the main `.tex` file at the root of the folder.
-
-## 6. Build it
+## 4. Build it
 
 Click the green play button in the top-right of the editor. LaTeX Workshop picks the default recipe and runs it.
 
+
+
 ![Screenshot of the VSCode editor with the main .tex file open, focused on the top-right title bar where the green "Build LaTeX project" play button is visible.](public/images/blog/local-latex-with-vscode-and-texlive/build_latex.png)
+
+
 
 If the build needs `biber` (any document with bibliography), the default recipe handles it. If you want a different recipe (e.g, your preferred workflow, windows specific flow fix for biber), the TeX sidebar on the left lets you pick one.
 
 
+
 ![ screenshot of the LaTeX Workshop sidebar in VSCode, the "Recipe" dropdown showing the custom "pdflatex -> biber -> pdflatex x 2" recipe selected instead of the default.](public/images/blog/local-latex-with-vscode-and-texlive/latex_tab.png)
 
-For a side-by-side preview of the source and the rendered PDF, open the preview tab.
+
+
+For a side-by-side preview of the source and the rendered PDF, open the preview tab. This opens the output pdf document with the tex file side by site, so that you can comapre your work in real time.
+
+
 
 ![Screenshot of the VSCode editor with the PDF preview panel open on the right and the .tex source on the left, showing the same content rendered in both.](public/images/blog/local-latex-with-vscode-and-texlive/preview_tab.png)
 
-## 7. Troubleshooting
+## 5. Troubleshooting
 
-The build works on most systems the first time. These are the fixes for the cases where it does not. Pick your OS.
+Although the build works on most systems the first time, you can often run into trouble with certain distributions. I wrote some troubleshooting guides on the most error-prone steps, so you can fix most problems that arise.
 
 <details open>
 <summary>Linux build fixes</summary>
 
-Two things, depending on your distro, plus a shell gotcha.
+Two things, depending on your distro and shell.
 
 ### `libxcrypt-compat` on Arch
 
-Skip this on Debian/Ubuntu. On Arch, biber is dynamically linked against the legacy `libxcrypt` symbols, and the newer toolchain no longer ships them. The error is `undefined symbol` from biber, with no hint that a package is missing. Install `libxcrypt-compat` and biber works:
+In some distros, biber is dynamically linked against the legacy `libxcrypt` symbols, and the newer toolchain no longer ships them. This results in the `undefined symbol` error from biber, with no hint that a package is missing. Install `libxcrypt-compat` and biber works to fix this issue.
+
+**On Arch:**
 
 ```sh
 sudo pacman -S libxcrypt-compat
 ```
 
+**On Ubuntu\Debian:**
+
+```sh
+sudo apt install libxcrypt-compat
+```
+
 ### Stale build files after Overleaf
 
-Overleaf's `.aux`, `.bbl`, `.fls`, and `.fdb_latexmk` files have a different timestamp ordering than the local toolchain expects. The first compile after switching to local keeps failing with "file has changed since I last read it." Run `latexmk -C` once before the first local build to clear the cache:
+Sometimes, Overleaf's `.aux`, `.bbl`, `.fls`, and `.fdb_latexmk` files have a different timestamp ordering than the local toolchain expects. The first compile after switching to local keeps failing with "file has changed since I last read it." error. You can often fix this error by clearing with latexmk once before the first local build to clear the cache:
 
 ```sh
 latexmk -C
@@ -233,7 +261,7 @@ Alternately, you can use the sidebar of LaTeX workshop extension.
 ![screenshot of the latex Tab with "LaTeX Workshop: Clean up auxiliary files" highlighted.](public/images/blog/local-latex-with-vscode-and-texlive/latex_tab_copy.png)
 </details>
 
-## 8. Notes
+## 6. Notes
 
 ## Custom fonts
 
@@ -246,9 +274,9 @@ b. CJK fonts (Noto Sans CJK) need the `texlive-lang-chinese` or `texlive-lang-ja
 c. Times-style math packages (`mathptmx`, `newtxtext`, `newtxmath`) live in `texlive-fonts-extra`. The error is a "file not found" from `pdflatex`.
 
 ## Real Time Collaboration
-One thing that's missing from this setup is the easy real-time collaboration you can get on Overleaf, even with free tier. If you really need something similar, you can either a) use git with GitHub to collaborate with others with a shared repo, b) Use vsCode's [collaboration session](https://learn.microsoft.com/en-us/visualstudio/liveshare/use/share-project-join-session-visual-studio-code) feature. Both come with their own caveats, so if you really need to replicate this particular feature, it seems more hassle-free to just pay for a paid plan.  
+One thing that's missing from this setup is the easy real-time collaboration you can get on Overleaf, even with free tier. If you really need something similar, you can either **use git with GitHub to collaborate with others with a shared repo** ir  **Use vsCode's [collaboration session](https://learn.microsoft.com/en-us/visualstudio/liveshare/use/share-project-join-session-visual-studio-code) feature**. Both come with their own caveats, so if you really need to replicate this particular feature, it seems more hassle-free to just pay for a paid plan.  
 
-## 9. Wrapping up
+## 7. Wrapping up
 
 Congratulations on following the guide to its fullest and having your own LaTeX setup. You now don't have to worry about Overleaf's compile time restrictions anymore! Now you can make your thesis drafts, journal articles etc as long as you can without having to pay for premium. You can also keep track of your files with git, committing when a part of your work is done. You can also use other VS Code extensions for adding cool functionality to latex. I recommend [Code spell checker](https://open-vsx.org/vscode/item?itemName=streetsidesoftware.code-spell-checker), [LTeX+](https://open-vsx.org/vscode/item?itemName=ltex-plus.vscode-ltex-plus) to start off. Have fun writing your own LaTex projects locally. 
 
