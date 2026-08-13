@@ -14,9 +14,9 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !(
-          page.startsWith("https://riasat-mahbub.github.io/blog/tags/") &&
-          page !== "https://riasat-mahbub.github.io/blog/tags/" &&
-          page !== "https://riasat-mahbub.github.io/blog/tags"
+          page.startsWith("https://rmahbub.com/blog/tags/") &&
+          page !== "https://rmahbub.com/blog/tags/" &&
+          page !== "https://rmahbub.com/blog/tags"
         ),
     }),
   ],
@@ -28,7 +28,7 @@ export default defineConfig({
       },
     },
   },
-  site: "https://riasat-mahbub.github.io/",
+  site: "https://rmahbub.com/",
   base: "/",
   output: "static",
   build: {
