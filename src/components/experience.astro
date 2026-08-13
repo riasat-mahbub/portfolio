@@ -50,29 +50,28 @@ const experiences: Experience[] = [
 
     <div class="grid gap-8 md:gap-12">
       {experiences.map((item) => (
-        <div class="border border-[var(--white-icon-tr)] rounded-xl p-4 md:p-6 bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition duration-300 flex flex-col md:flex-row items-center">
-          <div class="w-16 h-16 md:w-28 md:h-28 mb-4 md:mb-0 md:mr-4 rounded-lg flex items-center justify-center bg-white">
+        <div class="border border-[var(--white-icon-tr)] rounded-xl p-4 md:p-6 bg-[#1414149c] hover:bg-[var(--white-icon-tr)] transition duration-300 flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+          <div class="w-16 h-16 md:w-28 md:h-28 shrink-0 rounded-lg flex items-center justify-center bg-white">
             <Image src={item.image} alt={item.institution} class="w-12 h-12 md:w-20 md:h-20" />
           </div>
           <div class="flex flex-col flex-1 text-center md:text-left">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
               <h3 class="text-xl md:text-2xl font-medium text-[var(--white)]">
                 {item.role}
               </h3>
-              <span class="text-[var(--white-icon)] text-sm md:text-base">
+              <span class="text-[var(--white-icon)] text-xs md:text-sm mt-1 md:mt-0 px-2 py-0.5 rounded-full border border-[var(--white-icon-tr)] self-center md:self-auto">
                 {item.year}
               </span>
             </div>
-            <h4 class="text-lg text-[var(--white-icon)] mb-2">
+            <h4 class="text-sm md:text-base text-[var(--white-icon)] mb-3">
               {item.institution}
             </h4>
-            <div class="text-[var(--white-icon)] mb-4 space-y-2">
+            <ul class="text-[var(--white-icon)] text-sm md:text-[0.95rem] space-y-1.5 list-disc pl-5 marker:text-[var(--sec)]">
               {item.description.map((line) => (
-                <p>{line}</p>
+                <li>{line}</li>
               ))}
-            </div>
+            </ul>
           </div>
-
         </div>
       ))}
     </div>
