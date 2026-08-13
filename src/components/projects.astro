@@ -44,44 +44,11 @@ const projects: Project[] = [
     tags: ["TypeScript", "Templates", "CLI", "Terminal"],
   },
 ];
-
-const research: Project[] = [
-  {
-    title: "Understanding Code Smells and Refactoring Practices in Simulation Modelling Systems - A Comprehensive Study",
-    link: "https://dalspace.library.dal.ca/items/54690d16-478b-4d03-b2fd-12a95080d753",
-    description: "Masters thesis on code smells and refactoring patterns in large-scale simulation modelling repositories.",
-    tags: ["Code Smells", "Refactoring", "Simulation", "Thesis"],
-  },
-  {
-    title: "On the Prevalence, Evolution, and Impact of Code Smells in Simulation Modelling Software",
-    link: "https://www.arxiv.org/abs/2409.03957",
-    description: "Empirical study analyzing code smells across simulation modelling projects using pandas, Designite, parquet, BM25, seaborn and other data analysis and visualization frameworks.",
-    tags: ["Code Smells", "Empirical Study", "Pandas", "Designite"],
-  },
-  {
-    title: "Exploring Code Smells In Simulation Modelling Systems: Effectiveness, Risks And Impacts",
-    link: "https://www.nationalacademies.org/events/886",
-    description: "Study on the effectiveness, risks and impacts of code smells in simulation modelling systems, published at the TRB Annual Meeting.",
-    tags: ["Code Smells", "TRB 2026", "Risks", "Impacts"],
-  },
-  {
-    title: "City Recommender System: A Comparative Study of AI-Driven Approaches",
-    link: "https://link.springer.com/chapter/10.1007/978-3-031-73125-9_17",
-    description: "Comparative study of classic machine learning methods and a neural network approach for a city recommender system.",
-    tags: ["Machine Learning", "Neural Network", "Recommender", "Comparative Study"],
-  },
-  {
-    title: "Neural Network Architecture for the Classification of Alzheimer's Disease from Brain MRI",
-    link: "https://ieeexplore.ieee.org/document/9707412",
-    description: "Alzheimer's detection system utilizing 3D MRI data with CNNs and ensemble modeling.",
-    tags: ["Deep Learning", "CNN", "3D MRI", "Healthcare"],
-  },
-];
 ---
 
 <section class="py-16 border-[#ffffff10] text-[var(--white)] border-t-2" id="projects">
   <article class="max-w-5xl mx-auto">
-    <h2 class="text-lg text-[var(--sec)] mb-2">My work</h2>
+    <h2 class="text-lg text-[var(--sec)] mb-2">My personal works</h2>
     <h3 class="text-4xl md:text-5xl font-medium mb-8">Projects</h3>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
@@ -156,66 +123,4 @@ const research: Project[] = [
       </a>
     </div>
   </article>
-
-  <article class="py-12 border-t border-[#ffffff10] text-[var(--white)] max-w-5xl mx-auto my-10 px-4 sm:px-6 lg:px-0">
-    <div class="max-w-5xl mx-auto">
-      <h3 class="text-4xl md:text-5xl font-medium mb-10 text-center md:text-left">
-        Research
-      </h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-        {research.map((paper) => (
-          <a
-            href={paper.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group"
-          >
-            <div
-              class="flex flex-col justify-between h-full rounded-2xl shadow-lg bg-[#1414149c]
-                    p-5 sm:p-6 transition-all duration-300 
-                    hover:shadow-xl hover:scale-[1.03] hover:bg-[#1c1c1c]"
-            >
-              <div>
-                <h4 class="text-xl sm:text-2xl font-semibold mb-2 leading-snug">
-                  {paper.title}
-                </h4>
-                {paper.description && (
-                  <p class="text-sm sm:text-base text-[var(--white-icon)] leading-relaxed">
-                    {paper.description}
-                  </p>
-                )}
-                {paper.tags && paper.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mt-2">
-                    {paper.tags.map(tag => (
-                      <span class="px-2 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded text-xs">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div
-                class="self-end mt-6 size-12 sm:size-14 flex justify-center items-center 
-                      text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out 
-                      border border-[var(--white-icon-tr)] p-3 rounded-xl 
-                      bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="size-6 sm:size-7"
-                >
-                  <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
-                </svg>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </article>
-
 </section>
