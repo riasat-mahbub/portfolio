@@ -8,24 +8,33 @@ interface Education {
   image: ImageMetadata;
   institution: string;
   year: string;
-  description: string;
+  description: string[];
 }
 
+
 const educations: Education[] = [
-  {
+{
     degree: "Master of Computer Science",
     image: dal,
     institution: "Dalhousie University",
     year: "2025",
-    description: "Achieved cross disciplinary experience with planners and civil engineers to incorporate software engineering practices with simulation systems. Expanded my knowledge of LLM agents, simulation modeling and statistical techniques",
+    description: [
+      "Collaborated across disciplines with civil engineers to integrate empirical software engineering practices into domain-specific simulation systems.",
+      "Researched local LLM agent workflows, refactoring patterns, and static analysis metrics across 482 open-source repositories.",
+      "Authored a Master's thesis evaluating the impact of code smells on simulation modeling software maintainability."
+    ],
   },
   {
     degree: "Bachelor of Computer Science and Engineering",
     image: bracu,
     institution: "BRAC University",
     year: "2021",
-    description: "Earned comprehensive foundation in computer science, software engineering, algorithms, data structures, databases, and computer systems. Developed strong problem-solving, programming, and analytical skills by participating in both courses and programming contests.",
-  },
+    description: [
+      "Established core foundation in algorithms, data structures, relational database design, and software architecture.",
+      "Sharpened algorithmic thinking and analytical problem-solving skills through competitive programming contests and coursework.",
+      "Engineered machine learning and recommendation system capstone projects using Python and statistical data pipelines."
+    ],
+  }
 
 ];
 ---
@@ -57,9 +66,11 @@ const educations: Education[] = [
             <h4 class="text-lg text-[var(--white-icon)] mb-2">
               {item.institution}
             </h4>
-            <p class="text-[var(--white-icon)] mb-4">
-              {item.description}
-            </p>
+            <div class="text-[var(--white-icon)] mb-4 space-y-2">
+              {item.description.map((line) => (
+                <p>{line}</p>
+              ))}
+            </div>
           </div>
 
         </div>

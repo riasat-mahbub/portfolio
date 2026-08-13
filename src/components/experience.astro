@@ -8,8 +8,9 @@ interface Experience {
   image: ImageMetadata;
   institution: string;
   year: string;
-  description: string;
+  description: string[];
 }
+
 
 const experiences: Experience[] = [
   {
@@ -17,14 +18,23 @@ const experiences: Experience[] = [
     image: dal,
     institution: "Dalhousie University",
     year: "2023-2025",
-    description: "Conducted research on code quality, code smells, and refactoring practices in simulation modeling systems. Worked with LLM agents and statistical techniques to analyze large-scale software repositories. Collaborated with planners and civil engineers in a cross-disciplinary research environment.",
+    description: [
+      "Conducted research at the intersection of Software Engineering  and Simulation systems, addressing often overlooked code quality concerns in simulation software.",
+      "Researched large scale empirical studies comparing 155 simulation and 327 traditional projects for code quality (SCAM 2024) and refactoring practices (TRBAM 2026).",
+      "Furthered development of in-house simulation software by addressing code quality concerns and contributing to implementing critical features.",
+    ],
   },
   {
     role: "Associate Software Engineer",
     image: bs23,
     institution: "Brain Station 23",
     year: "2022-2023",
-    description: "At Brain Station 23, I learned to ship stable, reliable applications while writing clean and maintainable code. Most of my work was on web development with Angular and Laravel, and some other projects with Ionic and Moodle plugins",
+    description: [
+      "Engineered full-stack web and mobile applications using Angular, Laravel, and Ionic across high-rotation client projects.",
+      "Provisioned Linux environments and deployed containerized applications using Docker, Git version control, and CI/CD pipelines.",
+      "Developed custom Moodle and WordPress plugins, including an Ionic mobile interface designed to parse and structure Moodle HTML outputs.",
+      "Maintained application reliability and reduced technical debt by authoring unit and integration test suites across legacy and new codebases."
+    ],
   },
 ];
 ---
@@ -56,9 +66,11 @@ const experiences: Experience[] = [
             <h4 class="text-lg text-[var(--white-icon)] mb-2">
               {item.institution}
             </h4>
-            <p class="text-[var(--white-icon)] mb-4">
-              {item.description}
-            </p>
+            <div class="text-[var(--white-icon)] mb-4 space-y-2">
+              {item.description.map((line) => (
+                <p>{line}</p>
+              ))}
+            </div>
           </div>
 
         </div>
